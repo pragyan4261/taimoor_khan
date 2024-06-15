@@ -1,0 +1,499 @@
+/* MOBILE's FIRST - Custom properties */
+/* This classes will be then modified for bigger screens */
+
+#mowatave {
+    color: #00a256 !important;
+    text-decoration: underline;
+}
+
+ 
+.hov:hover{
+    background-color: #084269;
+}
+.hov2:hover{
+    background-color: #0c76bd;
+    
+}
+
+
+.underline {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#hobbiesH4 {
+    text-align: center;
+}
+
+#hobbie1,
+#hobbie2,
+#hobbie3 {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.abme-honors-bullet {
+    font-size: 16px;
+}
+
+/* GENERAL CSS */
+#main-content {
+    margin-top: 20px;
+}
+
+li>.active {
+    font-weight: 500;
+}
+
+.trnsf-thin {
+    font-weight: 300;
+}
+
+.trnsf-italic {
+    font-style: italic;
+}
+
+.justify {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.lucida-console {
+    font-family: 'Lucida Console', monospace;
+}
+
+/* NICOLAS MESEGUER CONTACT INFO - Related*/
+.profilepicture {
+    max-height: 300px;
+    min-width: 150px;
+    min-height: 150px;
+    margin: 20px auto;
+}
+
+#leftPanel {
+    background-color: black;
+    color: white;
+    /* Set text color to white or appropriate contrasting color */
+    padding: 50px;
+    /* Adjust padding as needed */
+    border-radius: 10px;
+    /* Optional: Add rounded corners */
+    align-items: center;
+}
+
+
+.fseneca {
+    max-width: 50%;
+    height: auto;
+}
+
+.fseneca:hover {
+    transform: scale(1.05, 1.05);
+}
+
+/* PUBLICATIONS - Related */
+.pub-block {
+    border-left: 2px #D9DDDC solid;
+    padding-left: 15px;
+}
+
+.pub-year-h2 {
+    font-size: 3.2em;
+    font-weight: 100;
+}
+
+.pub-authors {
+    font-weight: 400;
+}
+
+.pub-authors .pub-author {
+    font-weight: 500;
+}
+
+.pub-congress {
+    font-weight: 100;
+}
+
+.pub-force-margin-left {
+    margin-left: 10px !important;
+}
+
+/* ACADEMIC - Related */
+.academic-year-h2,
+.student-h2 {
+    font-size: 3.2em;
+    font-weight: 100;
+}
+
+.academic-block,
+.student-block {
+    padding-left: 15px;
+}
+
+.academic-rol {
+    font-weight: 400;
+}
+
+.academic-year {
+    font-weight: 100;
+}
+
+.student-mark {
+    font-weight: 400;
+    font-size: 1.1em;
+}
+
+.student-period {
+    font-weight: 100;
+}
+
+/* OPTION BUTTON */
+.options-button {
+    position: fixed;
+
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+
+    border-radius: 100%;
+
+    bottom: 25px;
+    right: 25px;
+
+    display: inline-block;
+
+    font-size: 1.2em;
+    vertical-align: middle;
+    text-align: center;
+
+    padding-top: .35em;
+}
+
+.options-button i,
+img {
+    margin: auto;
+    z-index: -999;
+}
+
+#options-toggler {
+    transition: .2s;
+}
+
+#options-toggler:hover {
+    transform: scale(1.09, 1.09);
+}
+
+#theme {
+    height: 40px;
+    width: 40px;
+
+    bottom: 85px !important;
+    right: 30px !important;
+
+    font-size: 1em;
+
+    -webkit-transition: background-color .5s;
+    /* For Safari 3.0 to 6.0 */
+    transition: background-color .5s;
+    /* For modern browsers */
+}
+
+#lan {
+    height: 40px;
+    width: 40px;
+
+    bottom: 130px;
+    right: 30px;
+
+    font-size: 1em;
+
+    -webkit-transition: background-color .5s;
+    /* For Safari 3.0 to 6.0 */
+    transition: background-color .5s;
+    /* For modern browsers */
+}
+
+.lang-flag {
+    height: 15px;
+    width: 22.5px;
+    vertical-align: 0px;
+}
+
+.social_icons {
+    width: 1rem;
+}
+
+
+
+.dropdown-menu{
+    position: absolute;
+    top: 120%;
+    border-radius:0%;
+    
+}
+
+.dropdown-menu,
+.dropdown-item
+ {
+    background-color: #073b57;
+    color: white;
+}
+
+/* Custom clicked effect */
+.dropdown-item.active,
+.dropdown-item:active,
+.show>.dropdown-toggle.dropdown-item {
+    background-color: #073b57;
+    /* Change the background color when clicked and after moving the cursor away */
+    color: #fff;
+    /* Change the text color when clicked and after moving the cursor away */
+}
+
+
+
+
+
+
+
+
+
+/* BLOG - Related */
+.blog-info {
+    font-weight: 100;
+    width: 100%;
+    clear: both;
+    display: block;
+}
+
+.blog-short {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.blog-tags {
+    text-align: right;
+}
+
+.blog-tags>.tag {
+    border-radius: 100px;
+    padding: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+    color: white;
+}
+
+.blog-tags>.t-purple {
+    background-color: rgb(137, 70, 255, 0.8);
+}
+
+.blog-tags>.t-lime {
+    background-color: rgba(118, 185, 0, 0.8);
+}
+
+.blog-tags>.t-sky {
+    background-color: rgba(37, 197, 223, 0.8);
+}
+
+.clickable {
+    border-radius: 20px;
+    border: 2px #D9DDDC solid;
+    padding: 15px;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0px 3px 50px rgba(0, 0, 0, 0.2);
+}
+
+.clickable:hover {
+    box-shadow: 0px 3px 50px rgba(0, 0, 0, 0.3);
+    transform: scale(1.03, 1.03);
+}
+
+/* CLASES PARTICULARES */
+.particular-h1 {
+    font-style: italic;
+    font-weight: 400;
+    padding: 0.2em 0.2em 0.2em 1em;
+    border-left: 5px #3fa5e9 solid;
+    background-color: rgba(137, 188, 230, 0.2);
+}
+
+.particular-h4 {
+    font-weight: 400;
+}
+
+#particularContent p {
+    margin-top: 1em;
+}
+
+.particular-name {
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.particular-clickable {
+    margin-bottom: 0.6em;
+    padding: 0.3em;
+    cursor: pointer;
+
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+.particular-clickable:hover {
+    transform: scale(1.02, 1.02);
+    transition: 0.4s;
+}
+
+.profilepicture-particular {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Gallery */
+.full {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.full .content {
+    display: flex;
+    margin: auto;
+    height: 100vh;
+    width: 50%;
+    display: grid;
+}
+
+.full .content img {
+    left: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+
+/* .gallery {
+    height: fit-content;
+	display: grid;
+	 grid-column-gap: 8px; 
+	 grid-row-gap: 8px;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	grid-auto-rows: 8px; 
+  }  */
+.gallery img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 0 16px #333;
+    transition: all 1.5s ease;
+}
+
+.gallery img:hover {
+    box-shadow: 0 0 32px #333;
+}
+
+.gallery .content {
+    padding: 4px;
+}
+
+.gallery .gallery-item {
+    transition: grid-row-start 300ms linear;
+    transition: transform 300ms ease;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.gallery .gallery-item:hover {
+    transform: scale(1.045);
+}
+
+.profile-link {
+    transition: filter 0.3s ease-in-out;
+}
+
+
+
+
+@media (max-width: 600px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
+    }
+
+    .full .content {
+        display: flex;
+        margin: auto;
+        height: 100vh;
+        width: 90%;
+        display: grid;
+    }
+}
+
+@media (max-width: 400px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+    }
+}
+
+/* Media query for mobile devices */
+
+
+
+/* MEDIA QUERIES */
+/* BIGGER SCREENS */
+@media (min-width: 768px) {
+
+
+    #hobbiesH4 {
+        text-align: left;
+    }
+
+    #hobbie1,
+    #hobbie2,
+    #hobbie3 {
+        text-align: left;
+        margin-top: 0;
+    }
+
+    .profilepicture {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+
+    .abme-honors-bullet {
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content {
+        padding-left: 0.8rem;
+        padding-right: 0.8rem;
+    }
+}
+
+
+/* Hide the tooltip text by default */
+.btn i[data-toggle="tooltip"]::after {
+    content: attr(data-tooltip-text);
+    display: none;
+}
+
+/* Show the tooltip text on hover */
+.btn i[data-toggle="tooltip"]:hover::after {
+    display: inline-block;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    z-index: 9999;
+    font-family: Arial, sans-serif; 
+}
+

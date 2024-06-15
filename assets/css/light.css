@@ -1,0 +1,146 @@
+:root {
+    --t-color: #000;
+    --nav-color: rgb(188, 188, 199);
+	 --bg-color: #dedede;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--t-color);
+}
+.hov:hover{
+    background-color: #084269;
+}
+.hov2:hover{
+    background-color: #0c76bd;
+}
+.profilepicture {
+	max-height: 300px;
+	min-width: 150px;
+	min-height: 150px;
+	margin: 20px auto;
+}
+#profilepicture::after {
+    content: "";
+    display: block;
+    border-bottom: 1px dotted white; /* Change to your desired color and style */
+    margin-top: 10px; /* Adjust the margin as needed */
+}
+#leftPanel {
+    background-color: #073b57;
+    color: white; /* Set text color to white or appropriate contrasting color */
+    padding: 20px; /* Adjust padding as needed */
+    border-radius: 10px; /* Optional: Add rounded corners */
+	align-items: center;
+}
+.col-10{
+    color: white;
+}
+
+h1,
+h2,
+h4,
+b {
+    color: var(--t-color) !important;
+}
+
+h3{
+    color: var(white);
+}
+
+.navbar-toggler-icon {
+	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-toggler:focus {
+	box-shadow: 0px 0px 4px rgba(255, 255, 255, 0.7) !important;
+}
+#top-nav {
+    background-color: #096192 !important;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255) !important;
+}
+
+.nav-link:hover {
+    color: rgba(255, 255, 255) !important;
+}
+
+.t-secondary {
+    color: white;
+}
+
+.link-dark {
+    color: white !important;
+}
+
+.link-dark:hover {
+    color: whitesmoke !important;
+}
+
+/* OPTION BUTTON */
+.options-button {
+    background-color: var(--bg-color);
+    border: 1px solid #000;
+}
+
+#options-toggler {
+    box-shadow: 0px 3px 50px rgba(0, 0, 0, 0.2);
+}
+
+#options-toggler:hover {
+    box-shadow: 0px 3px 50px rgba(0, 0, 0, 0.3);
+}
+
+#theme:hover,
+#lan:hover {
+    background-color: #d3d3d3;
+}
+
+/* BLOG - Related */
+
+.blog-short {
+    color: #717378;
+}
+
+/* TEACHING RELATED */
+.academic-name {
+    color: #22517d;
+}
+
+.academic-block {
+    border-left: 2px #22517d solid;
+}
+
+.Text{
+	color: black;
+}
+.Bg{
+	background-color: #abb1b8;
+}
+.read{
+    color: blue;
+}
+.dropdown-menu,
+.dropdown-item,
+.dropdown-item:hover {
+    background-color: #073b57;
+    /* Change the background color when hovered */
+    color: white;
+    /* Change the text color when hovered */
+}
+
+/* Custom clicked effect */
+.dropdown-item.active,
+.dropdown-item:active,
+.show>.dropdown-toggle.dropdown-item {
+    background-color: #073b57;
+    /* Change the background color when clicked and after moving the cursor away */
+    color: #fff;
+    /* Change the text color when clicked and after moving the cursor away */
+}
+
+.table-bg{
+    background-color: #00274e;
+    color: white;
+}
