@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const awardsTableBody = document.getElementById('awardsTableBody');
 
     // Fetch and display existing awards
-    fetch('http://localhost:1335/api/awards/read')
+    fetch('https://taimoor-khan.onrender.com/api/awards/read')
         .then(response => response.json())
         .then(data => {
             data.forEach(award => {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             organisation: form.organisation.value
         };
 
-        fetch('http://localhost:1335/api/awards/add', {
+        fetch('https://taimoor-khan.onrender.com/api/awards/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
