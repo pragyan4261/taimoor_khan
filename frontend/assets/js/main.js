@@ -470,7 +470,7 @@ $(document).ready(function(){
 
 			// // Show current content
 			// activateDiv('#updateContent');
-			window.location.href = '/frontend/auth/login.html';
+			// window.location.href = '/frontend/auth/login.html';
 		}
 	});
 
