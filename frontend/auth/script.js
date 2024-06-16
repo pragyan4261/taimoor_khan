@@ -48,7 +48,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
         alert('Login successful!');
         // You can save the token in localStorage or cookies and redirect to another page if needed
         localStorage.setItem('token', data.user);
-        window.location.href = '/update.html'; // Redirect to a dashboard or another page
+        window.location.href = '../update.html'; // Redirect to a dashboard or another page
     } else {
         alert('Login failed: ' + data.error);
     }

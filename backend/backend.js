@@ -6,16 +6,16 @@ const path = require('path');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
-const User = require('./auth/models/user.model');
-const Award = require('./auth/models/award.model');
+const User = require('./models/user.model');
+const Award = require('./models/award.model');
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'frontend/public')));
+// app.use(express.static(path.join(__dirname, 'frontend/public')));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/taimoor', {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected'))
@@ -93,7 +93,7 @@ app.get('/api/awards/read', async (req, res) => {
 });
 // Serve the frontend
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'frontend', 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'frontend', 'index.html'));
 });
 
 const PORT = process.env.PORT || 1335;
