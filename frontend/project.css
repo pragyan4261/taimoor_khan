@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+h4{
+    margin-top: 2vh;
+}
+.form-group{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1vh 0;
+}
+.form-group input{
+    width: 60vh;
+    height: 4vh;
+    margin-top: 2vh;
+}
+button{
+    height: 5vh;
+    width: 20vw;
+    background: #0a58ca;
+    color: white;
+    
+
+}
