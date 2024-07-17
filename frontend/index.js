@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const awardsTableBody = document.getElementById('awardsTableBody');
     const project = document.getElementById('addProjectForm');
     const projectTableBody = document.getElementById('table');
-
+    console.log(2+2)
     // Fetch and display existing awards
     fetch('https://taimoor-khan.onrender.com/api/awards/read')
         .then(response => response.json())
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 awardsTableBody.appendChild(row);
             });
         });
-
+        console.log(2+3)
     // Handle form submission
     form.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error:', error));
     });
     //handel project submission
+    console.log(2+4)
     project.addEventListener('submit', (event) => {
         event.preventDefault();
 
@@ -87,4 +88,5 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error:', error));
     });
+        
 });
