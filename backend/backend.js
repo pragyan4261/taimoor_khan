@@ -8,6 +8,7 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 const User = require('./models/user.model');
 const Award = require('./models/award.model');
+const DB_NAME = 'Cluster0';
 
 const app = express();
 app.use(cors());
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
 }).then(() => console.log('MongoDB connected'))
 .catch(err => console.log('MongoDB connection error:', err));;
 
