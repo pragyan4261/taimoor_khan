@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.html">
+    <link rel="stylesheet" href="project.css">
+    <!-- <script src="index.js"></script> -->
+    <script defer src="books.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h4>Add new books</h4>
+        <form id="addBookForm">
+            <div class="form-group">
+                <label for="description">Enter the details of the book</label>
+                <input type="text" class="form-control" id="conferenceContent" required>
+            </div>
+            <div class="form-group">
+                <label for="subdescription">Enter Sub Description</label>
+                <input type="text" class="form-control" id="jouDoi" required>
+            </div>
+            <div class="form-group">
+                <label for="doiLink">Enter DOI LINK</label>
+                <input type="text" class="form-control" id="jouDoi" >
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary" onclick="window.location.href='index.html'">Add books</button>
+        
+    </div>
+</body>
+    <script src="books.js"></script>
+</html>

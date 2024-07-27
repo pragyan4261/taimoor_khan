@@ -1,0 +1,33 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.category {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.category a {
+    text-decoration: none;
+}
+.category a:link, .category a:visited, .category a:hover, .category a:active {
+    text-decoration: none;
+}
+.category a p {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    color:#007BFF;
+}
+
+/* Hover effect for category items */
+.category p:hover {
+    background-color: #007BFF;
+    color: #fff;
+}

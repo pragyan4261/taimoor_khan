@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="project.css">
+    <script src="index.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h4>Add new project</h4>
+        <form id="addProjectForm">
+            <div class="form-group">
+                <label for="investigator">Name and Role of Investigator</label>
+                <input type="text" class="form-control" id="investigator" required>
+            </div>
+            <div class="form-group">
+                <label for="foreign_Collab">Foreign Collaborator</label>
+                <input type="text" class="form-control" id="foreignCollab" required>
+            </div>
+            <div class="form-group">
+                <label for="project_title">Project Title</label>
+                <input type="text" class="form-control" id="title" required>
+            </div>
+            <div class="form-group">
+                <label for="founding_agency">Funding Agency</label>
+                <input type="text" class="form-control" id="founding" required>
+            </div>
+            <div class="form-group">
+                <label for="found">Sanctioned Found and Status</label>
+                <input type="text" class="form-control" id="status" required>
+            </div>
+        </form>
+        <button type="submit" class="btn btn-primary" onclick="window.location.href='index.html'">Add Project</button>
+        
+    </div>
+</body>
+</html>
