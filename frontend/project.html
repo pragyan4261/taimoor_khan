@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="project.css">
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <title>Document</title>
 </head>
 <body>
@@ -16,24 +16,29 @@
                 <input type="text" class="form-control" id="investigator" required>
             </div>
             <div class="form-group">
-                <label for="foreign_Collab">Foreign Collaborator</label>
-                <input type="text" class="form-control" id="foreignCollab" required>
+                <label for="foreignCollab">Foreign Collaborator</label>
+                <input type="text" class="form-control" id="foreignCollab" >
             </div>
             <div class="form-group">
-                <label for="project_title">Project Title</label>
+                <label for="title">Project Title</label>
                 <input type="text" class="form-control" id="title" required>
             </div>
             <div class="form-group">
-                <label for="founding_agency">Funding Agency</label>
+                <label for="founding">Funding Agency</label>
                 <input type="text" class="form-control" id="founding" required>
             </div>
             <div class="form-group">
-                <label for="found">Sanctioned Found and Status</label>
+                <label for="funds">Sanctioned Fund</label>
+                <input type="text" class="form-control" id="funds" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Enter status of the project (Ongoing/Completed)</label>
                 <input type="text" class="form-control" id="status" required>
             </div>
+            <button type="submit" class="btn btn-primary">Add Project</button>
         </form>
-        <button type="submit" class="btn btn-primary" onclick="window.location.href='index.html'">Add Project</button>
-        
     </div>
+
+
 </body>
 </html>

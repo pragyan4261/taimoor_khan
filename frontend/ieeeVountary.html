@@ -9,21 +9,21 @@
 </head>
 <body>
     <div class="container">
-        <h4>Add new journal</h4>
-        <form id="addjournalForm">
+        <h4>Add new service</h4>
+        <form id="addserviceForm">
             <div class="form-group">
                 <label for="year">Enter the year</label>
                 <input type="text" class="form-control" id="year" required>
+            </div> 
+            <div class="form-group">
+                <label for="description">Enter Description</label>
+                <input type="text" class="form-control" id="description" >
             </div>
             <div class="form-group">
-                <label for="description">Enter the details of the journal</label>
-                <input type="text" class="form-control" id="description" required>
+                <label for="place">Enter the IEEE brach and place</label>
+                <input type="text" class="form-control" id="branch" >
             </div>
-            <div class="form-group">
-                <label for="doiLink">Enter DOI LINK</label>
-                <input type="url" class="form-control" id="doiLink" required>
-            </div>
-            <button type="submit" class="btn btn-primary" >Add Journal</button>
+            <button type="submit" class="btn btn-primary">Add Conference</button>
         </form>
         
     </div>

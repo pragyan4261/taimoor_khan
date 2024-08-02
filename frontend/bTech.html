@@ -9,18 +9,30 @@
 </head>
 <body>
     <div class="container">
-        <h4>Add new project</h4>
-        <form id="addProjectForm">
+        <h4>Add new b.tech project</h4>
+        <form id="addbTechForm">
+            <div class="form-group">
+                <label for="startyear">Enter the starting of academic year</label>
+                <input type="text" class="form-control" id="startyear" required>
+            </div>
+            <div class="form-group">
+                <label for="endingyear">Enter the ending of academic year</label>
+                <input type="text" class="form-control" id="endingyear" required>
+            </div>
+            <div class="form-group">
+                <label for="name">Enter the name of the student</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
             <div class="form-group">
                 <label for="description">Enter the details of the thesis</label>
-                <input type="text" class="form-control" id="mtechThesisContent" required>
+                <input type="text" class="form-control" id="description" required>
             </div>
-            <div>
-                <label for="description">Enter your role</label>
-                <input type="text" class="form-control" id="btechThesisContent" >
+            <div class="form-group">
+                <label for="subdescription">Enter Depertment and institute</label>
+                <input type="text" class="form-control" id="subdescription" >
             </div>
+            <button type="submit" class="btn btn-primary" >Add</button>
         </form>
-        <button type="submit" class="btn btn-primary" onclick="window.location.href='index.html'">Add</button>
         
     </div>
 </body>

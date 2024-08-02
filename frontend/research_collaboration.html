@@ -10,21 +10,31 @@
 <body>
     <div class="container">
         <h4>Add Research Collaborations</h4>
-        <form id="addProjectForm">
-            <div class="form-group">Name of Professor</label>
-                <input type="text" class="form-control" id="investigator" required>
+        <form id="addreserchsclForm">
+            <div class="form-group">
+                <label for="name">Name of Professor</label>
+                <input type="text" class="form-control" id="name" required>
             </div>
             <div class="form-group">
-                <label for="foreign_Collab">Affiliation</label>
-                <input type="text" class="form-control" id="foreignCollab" required>
+                <label for="affiliation">Affiliation</label>
+                <input type="text" class="form-control" id="affiliation" required>
             </div>
             <div class="form-group">
-                <label for="project_title">Nature of Collaboration</label>
-                <input type="text" class="form-control" id="title" required>
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="projectTitle">Nature of Collaboration</label>
+                <input type="text" class="form-control" id="projectTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="type">Type Collaboration(Foreign/Indian)</label>
+                <input type="text" class="form-control" id="type" required>
             </div>
             
+            
+            <button type="submit" class="btn btn-primary" >Add Project</button>
         </form>
-        <button type="submit" class="btn btn-primary" onclick="window.location.href='index.html'">Add Project</button>
         
     </div>
 </body>
