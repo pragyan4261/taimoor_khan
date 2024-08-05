@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //     console.log(2+3)
     if(awardsTableBody){
         
-        fetch('http://localhost:1335/api/awards/read')
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/awards/read')
         .then(response => response.json())
         .then(data => {
             data.sort((a, b) => a.year - b.year);
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // console.log("newAward",newAward);
             window.location.href = 'index.html';
             
-            fetch('http://localhost:1335/api/awards/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/awards/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //handel project submission
     if(projectTableBody){
-        fetch('http://localhost:1335/api/projects/read')
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/projects/read')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // console.log("newProject",newProject);
             window.location.href = 'index.html';
     
-            fetch('http://localhost:1335/api/projects/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/projects/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if(adminExpBody){
-        fetch('http://localhost:1335/api/administratives/read')
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/administratives/read')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("newAdminExp",newAdminExp);
             window.location.href = 'index.html';
     
-            fetch('http://localhost:1335/api/administratives/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/administratives/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Fetch and display existing journals
         if (journalsBody) {
-            fetch('http://localhost:1335/api/journals/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/journals/read')
                 .then(response => response.json())
                 .then(data => {
                     // Organize data by year
@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 // console.log("newJournal",newJournal);
                 window.location.href = 'index.html';
-                fetch('http://localhost:1335/api/journals/add', {
+                fetch('https://taimoor-khan-zxmp.onrender.com/api/journals/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -362,7 +362,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         if(conferenceBody){
-            fetch('http://localhost:1335/api/conferences/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/conferences/read')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -405,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("newConference",newConference);
                 window.location.href = 'index.html';
         
-                fetch('http://localhost:1335/api/conferences/add', {
+                fetch('https://taimoor-khan-zxmp.onrender.com/api/conferences/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if(booksbody){
             const booksList = booksbody.querySelector('ul');
-            fetch('http://localhost:1335/api/books/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/books/read')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             // console.log('newbook',newBook);
             window.location.href = 'index.html';
-            fetch('http://localhost:1335/api/books/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/books/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -531,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (bTechBody) {
             const thesisList = bTechBody.querySelector('ul'); // Adjust selector as needed
         
-            fetch('http://localhost:1335/api/btechthesis/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/btechthesis/read')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');
@@ -587,7 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     subdescription: bTeckForm.subdescription.value
                 };
                 window.location.href = 'index.html';
-                fetch('http://localhost:1335/api/btechthesis/add', {
+                fetch('https://taimoor-khan-zxmp.onrender.com/api/btechthesis/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -639,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if(mTechTableBody){
             const mTechList = mTechTableBody.querySelector('ul');
-            fetch('http://localhost:1335/api/mtechthesis/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/mtechthesis/read')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 console.log("newMtechThesis",newMTechThesis);
                 window.location.href = 'index.html';
-                fetch('http://localhost:1335/api/mtechthesis/add', {
+                fetch('https://taimoor-khan-zxmp.onrender.com/api/mtechthesis/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -714,7 +714,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         // if(mTechTableBody){
         //     const mTechList = mTechTableBody.querySelector('ul');
-        //     fetch('http://localhost:1335/api/mtechthesis/read')
+        //     fetch('https://taimoor-khan-zxmp.onrender.com/api/mtechthesis/read')
         //     .then(response => {
         //         if (!response.ok) {
         //             throw new Error('Network response was not ok');
@@ -746,7 +746,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //     .catch(error => console.error('Error fetching projects:', error));
         // } 
         if(phdthesisBody){
-            fetch('http://localhost:1335/api/phdthesis/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/phdthesis/read')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -812,7 +812,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
                 // console.log("newPhdThesis",newphdThesis);
                 window.location.href = 'index.html';
-                fetch('http://localhost:1335/api/phdthesis/add', {
+                fetch('https://taimoor-khan-zxmp.onrender.com/api/phdthesis/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -870,7 +870,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         if(collaborationContent){
-            fetch('http://localhost:1335/api/researches/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/researches/read')
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
@@ -916,7 +916,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // console.log("newResearch",newResearch);
                 window.location.href = 'index.html';
                 const newRow = document.createElement('tr');
-                fetch('http://localhost:1335/api/researches/add', {
+                fetch('https://taimoor-khan-zxmp.onrender.com/api/researches/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -951,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if(ieeeContent){
         
-            fetch('http://localhost:1335/api/ieeeservices/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/ieeeservices/read')
             .then(response => response.json())
             .then(data => {
                 data.sort((a, b) =>a.year - b.year);
@@ -981,7 +981,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // console.log("newAward",newAward);
                 window.location.href = 'index.html';
                 
-                fetch('http://localhost:1335/api/ieeeservices/add', {
+                fetch('https://taimoor-khan-zxmp.onrender.com/api/ieeeservices/add', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -1006,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if(talksList){
             console.log('talks',talksList)
-            fetch('http://localhost:1335/api/invitedtalk/read')
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/read')
             .then(response => response.json())
             .then(data => {
                 data.forEach(talk => {
@@ -1031,7 +1031,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 description: talksForm.description.value
             };
             window.location.href = 'index.html'
-            fetch('http://localhost:1335/api/invitedtalk/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
