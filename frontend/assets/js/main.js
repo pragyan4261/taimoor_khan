@@ -593,7 +593,7 @@ function clearActiveLinks() {
 }
 
 function clearActiveDivs() {
-	$('.container .content .active').each(function() {
+	$('.container .content .active ').each(function() {
 		$(this).removeClass('active');
 		$(this).hide();
 	});
