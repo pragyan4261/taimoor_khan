@@ -9,19 +9,39 @@
 </head>
 <body>
     <div class="container">
-        <h4>Add new project</h4>
-        <form id="addProjectForm">
+        <h4>Add new thesis</h4>
+        <form id="addphdtForm">
+            <div class="form-group">
+                <label for="name">Enter the name of the student</label>
+                <input type="text" class="form-control" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="sclId">Enter the scl id of the student</label>
+                <input type="text" class="form-control" id="sclId" required>
+            </div>
+            <div class="form-group">
+                <label for="status">Enter the status of the thesis(Ongoing/Completed)</label>
+                <input type="text" class="form-control" id="status" required>
+            </div>
+            <div class="form-group">
+                <label for="startyear">Enter the starting of academic year</label>
+                <input type="text" class="form-control" id="startyear" >
+            </div>
+            <div class="form-group">
+                <label for="endingyear">Enter the ending of academic year</label>
+                <input type="text" class="form-control" id="endingyear" >
+            </div>
             <div class="form-group">
                 <label for="description">Enter the details of the thesis</label>
                 <input type="text" class="form-control" id="phdThesisContent" required>
             </div>
-            <div>
-                <label for="description">Enter your role</label>
-                <input type="text" class="form-control" id="phdThesisContent" >
+            <div class="form-group">
+                <label for="role">Enter your role</label>
+                <input type="text" class="form-control" id="role" >
             </div>
             
+            <button type="submit" class="btn btn-primary" >Add</button>
         </form>
-        <button type="submit" class="btn btn-primary" onclick="window.location.href='index.html'">Add</button>
         
     </div>
 </body>

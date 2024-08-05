@@ -1,92 +1,1059 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('addAwardForm');
     const awardsTableBody = document.getElementById('awardsTableBody');
-    const project = document.getElementById('addProjectForm');
-    const projectTableBody = document.getElementById('table');
-    console.log(2+2)
-    // Fetch and display existing awards
-    fetch('https://taimoor-khan.onrender.com/api/awards/read')
+    const projectTableBody = document.getElementById('projectTableBody');
+    const projectForm = document.getElementById('addProjectForm');
+    const adminExpBody = document.getElementById('adminExpBody');
+    const adminExpForm = document.getElementById('addadministrativeForm');
+    const journalsBody = document.getElementById('journalsContainer');
+    const journalForm = document.getElementById('addjournalForm');
+    const conferenceForm = document.getElementById('addConferenceForm');
+    const conferenceBody = document.getElementById('conferenceBody');
+    const booksbody = document.getElementById('booksbody');
+    const booksForm = document.getElementById('addBookForm');
+    const bTechBody = document.getElementById('b.techBody');
+    const bTeckForm = document.getElementById('addbTechForm');
+    const mTechTableBody = document.getElementById('mTechThesisBody');
+    const mTechForm = document.getElementById('addmTechForm');
+    const phdthesisBody = document.getElementById('phdthesisBody');
+    const phdForm = document.getElementById('addphdtForm');
+    const reasearchForm = document.getElementById('addreserchsclForm');
+    const foreignCollaborations = document.querySelector('#foreignCollaborations');
+    const indianCollaborations = document.querySelector('#indianCollaborations');
+    const collaborationContent = document.getElementById('collaborationContent');
+    const ieeeContent = document.getElementById('ieeeTableBody');
+    const serviceForm = document.getElementById('addserviceForm');
+    const talksForm = document.getElementById('addInvitedTalkForm');
+    const talksList = document.getElementById('talksList');
+    const ongoingProjectsBody = document.getElementById('ongoingProjectsBody');
+    const completedProjectsBody = document.getElementById('completedProjectsBody');
+    // if (!table) {
+    //     console.error('Error: Table with id "ieeeContent" not found.');
+    //     return;
+    // }
+
+    console.log(bTechBody)
+    // console.log(adminExpForm);
+    
+    //     console.log(2+3)
+    if(awardsTableBody){
+        
+        fetch('http://localhost:1335/api/awards/read')
         .then(response => response.json())
         .then(data => {
+            data.sort((a, b) => a.year - b.year);
+            // console.log('Data fetched:', data);
             data.forEach(award => {
+                
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <th scope="row">${award.year}</th>
                     <td>${award.name}</td>
                     <td>${award.organisation}</td>
                 `;
-                awardsTableBody.appendChild(row);
+                // console.log('row', row);
+                awardsTableBody.insertBefore(row, awardsTableBody.firstChild);
             });
         });
-        console.log(2+3)
+    }
+
     // Handle form submission
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const newAward = {
-            year: form.year.value,
-            name: form.name.value,
-            organisation: form.organisation.value
-        };
-
-        fetch('https://taimoor-khan.onrender.com/api/awards/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newAward)
-        })
-        .then(response => response.json())
-        .then(data => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <th scope="row">${data.year}</th>
-                <td>${data.name}</td>
-                <td>${data.organisation}</td>
-            `;
-            awardsTableBody.appendChild(row);
-            form.reset();
+    if(form){
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const newAward = {
+                year: form.year.value,
+                name: form.name.value,
+                organisation: form.organisation.value
+            };
+            // console.log("newAward",newAward);
+            window.location.href = 'index.html';
             
-        })
-        .catch(error => console.error('Error:', error));
-    });
+            fetch('http://localhost:1335/api/awards/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newAward)
+            })
+            .then(response => response.json())
+            .then(data => {
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <th scope="row">${data.year}</th>
+                    <td>${data.name}</td>
+                    <td>${data.organisation}</td>
+                `;
+                awardsTableBody.insertBefore(row, awardsTableBody.firstChild);
+                window.location.href = 'index.html';
+                // form.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    }
+
+    
     //handel project submission
-    console.log(2+4)
-    project.addEventListener('submit', (event) => {
-        event.preventDefault();
-
-        const newProject = {
-            investigator: project.investigator.value,
-            foreign_collaborator: project.name.value,
-            project_Title: project.project_title.value,
-            funding_Agency:project.founding_agency.value,
-            funds:project.funds.value,
-        };
-        console.log(newProject);
-
-        fetch('http://localhost:1335/projects/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newProject)
+    if(projectTableBody){
+        fetch('http://localhost:1335/api/projects/read')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
         })
-        .then(response => response.json())
         .then(data => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <th scope="row">${data.investigator}</th>
-                <td>${data.foreign_collaborator}</td>
-                <td>${data.project_Title}</td>
-                <td>${data.funding_Agency}</td>
-                <td>${data.funds}</td>
-
-            `;
-            projectTableBody.appendChild(row);
-            project.reset();
-            
+            // console.log('Projects Data fetched:', data);
+            data.forEach((project,index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                   
+                    <td>${project.investigator}</td>
+                    <td>${project.foreign_collaborator}</td>
+                    <td>${project.project_Title}</td>
+                    <td>${project.funding_Agency}</td>
+                    <td>${project.funds}</td>
+                `;
+                console.log(project.status);
+                console.log(ongoingProjectsBody)
+                if (project.status.toLowerCase() === 'ongoing') {
+                    ongoingProjectsBody.insertBefore(row, ongoingProjectsBody.firstChild);
+                } else {
+                    completedProjectsBody.insertBefore(row, completedProjectsBody.firstChild);
+                }
+            });
         })
-        .catch(error => console.error('Error:', error));
-    });
+        .catch(error => console.error('Error fetching projects:', error));
+    }
+
+
+    if(projectForm){
+        projectForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const newProject = {
+                investigator: projectForm.investigator.value,
+                foreign_collaborator: projectForm.foreignCollab.value,
+                project_Title: projectForm.title.value,
+                funding_Agency:projectForm.founding.value,
+                funds:projectForm.funds.value,
+                status:projectForm.status.value,
+            };
+            // console.log("newProject",newProject);
+            window.location.href = 'index.html';
+    
+            fetch('http://localhost:1335/api/projects/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newProject)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Project added:', data);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    
+                    <td scope="row">${data.investigator}</td>
+                    <td></td>
+                    <td>${data.foreign_collaborator}</td>
+                    <td>${data.project_Title}</td>
+                    <td>${data.funding_Agency}</td>
+                    <td>${data.funds}</td>
+    
+                `;
+                console.log(data.status)
+                if (data.status.toLowerCase() === 'ongoing') {
+                    ongoingProjectsBody.insertBefore(row, ongoingProjectsBody.firstChild);
+                } else {
+                    completedProjectsBody.insertBefore(row, completedProjectsBody.firstChild);
+                }
+            
+               
+                projectForm.reset();
+                
+                
+            })
+            .catch(error => console.error('Error:', error));
+            });
+    }
+
+    if(adminExpBody){
+        fetch('http://localhost:1335/api/administratives/read')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            // console.log("response",response);
+            return response.json();
+        })
+        .then(data => {
+            // console.log('adminExp Data fetched:', data);
+            data.forEach((adminExp,index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    
+                    <td>${adminExp.institute}</td>
+                    <td>${adminExp.designation}</td>
+                    <td>${adminExp.from}</td>
+                    <td>${adminExp.to}</td>
+                    <td>${adminExp.duration}</td>
+                `;
+                console.log(row);
+                adminExpBody.insertBefore(row, adminExpBody.firstChild);
+            });
+        })
+        .catch(error => console.error('Error fetching projects:', error));
+    }
+
+    if(adminExpForm){
+        adminExpForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            
+            const newAdminExp = {
+                institute: adminExpForm.institute.value,
+                designation: adminExpForm.designation.value,
+                from: adminExpForm.from.value,
+                to:adminExpForm.to.value,
+                duration:adminExpForm.duration.value,
+            };
+            console.log("newAdminExp",newAdminExp);
+            window.location.href = 'index.html';
+    
+            fetch('http://localhost:1335/api/administratives/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newAdminExp)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // console.log('newAdminExp added:', data);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    
+                    <td >${data.institute}</td>
+                    <td>${data.designation}</td>
+                    <td>${data.from}</td>
+                    <td>${data.to}</td>
+                    <td>${data.duration}</td>
+    
+                `;
+                console.log("row",row)
+                projectTableBody.insertBefore(row, adminExpBody.firstChild);
+               
+                projectForm.reset();
+                
+                
+            })
+            .catch(error => console.error('Error:', error));
+            });
+    }
+    
+        // Fetch and display existing journals
+        if (journalsBody) {
+            fetch('http://localhost:1335/api/journals/read')
+                .then(response => response.json())
+                .then(data => {
+                    // Organize data by year
+                    data.sort((a, b) => b.year - a.year);
+                    console.log(data);
+                    const journalsByYear = {};
+                    data.forEach(journal => {
+                        
+                        if (!journalsByYear[journal.year]) {
+                            journalsByYear[journal.year] = [];
+                        }
+                        journalsByYear[journal.year].push(journal);
+                    });
+                    // Generate HTML for each year
+                    for (const [year, journals] of Object.entries(journalsByYear)) {
+                        const yearHeader = document.createElement('div');
+                        yearHeader.classList.add('h4');
+                        yearHeader.textContent = year;
+    
+                        const journalEntries = journals.map((journal, index) => {
+                            return `
+                                <div class="academic-block mb-4">
+                                    <div>
+                                        <strong>${index + 1}.</strong> ${journal.description}
+                                    </div>
+                                    <div class="mb-4">
+                                        <strong>DOI: </strong>
+                                        <a class="read fw-bold" href="${journal.doiLink}" target="_blank">${journal.doiLink}</a>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+    
+                        journalsBody.insertAdjacentHTML('afterbegin', yearHeader.outerHTML + journalEntries);
+                    }
+                })
+                .catch(error => console.error('Error fetching journals:', error));
+        }
+    
+        // Handle form submission
+        if (journalForm) {
+            // console.log("journal form")
+            journalForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                // console.log("journal form submission")
+                const newJournal = {
+                    year: journalForm.year.value,
+                    description: journalForm.description.value,
+                    doiLink: journalForm.doiLink.value,
+                };
+                // console.log("newJournal",newJournal);
+                window.location.href = 'index.html';
+                fetch('http://localhost:1335/api/journals/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newJournal)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // console.log("Journal added:", data.doi);
+                    data.sort((a, b) => b.year - a.year);
+                    const journalBlock = document.createElement('div');
+                    journalBlock.classList.add('academic-block', 'mb-4');
+                    journalBlock.innerHTML = `
+                        <div class="h4">${data.year}</div>
+                            <div>
+                                <strong>${data.description}</strong>
+                            </div>
+                            <div class="mb-4">
+                                <strong>DOI: </strong>
+                                <a class="read fw-bold" href="${data.doi}" target="_blank">${data.doi}</a>
+                            </div>
+                        `;
+                    journalsBody.style.borderLeft = '0';
+                    journalsBody.style.paddingLeft = '0px';
+                    journalsBody.appendChild(journalBlock);
+                    journalForm.reset();
+                    
+                    let yearHeader = Array.from(journalsBody.querySelectorAll('.h4'))
+                .find(header => header.textContent === data.year.toString());
+            
+                if (!yearHeader) {
+                    yearHeader = document.createElement('div');
+                    yearHeader.classList.add('h4');
+                    yearHeader.textContent = data.year;
+                    journalsBody.insertBefore(yearHeader, journalsBody.firstChild);
+                }
+                        
+                    })
+                .catch(error => console.error('Error:', error));
+            });
+        }
+        if(conferenceBody){
+            fetch('http://localhost:1335/api/conferences/read')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // console.log("response",response);
+                return response.json();
+            })
+            .then(data => {
+                let index = 58;
+                // console.log('adminExp Data fetched:', data);
+                data.forEach(conference => {
+                    const conferenceBlock = document.createElement('div');
+                    conferenceBlock.classList.add('academic-block', 'mb-4');
+                    conferenceBlock.innerHTML = `
+                        <div class="lucida-console h5 academic-name language mb-0">
+                        ${index++}. ${conference.conferenceContent}
+                        </div>
+                        <div class="pub-authors mb-4"><span class="pub-author"> 
+                                ${conference.subdescription}
+                            </div>
+                    `;
+                    conferenceBlock.style.borderLeft = '0';
+                    conferenceBlock.style.paddingLeft = '0px';
+                    console.log(conferenceBlock);
+                    conferenceBody.insertBefore(conferenceBlock, conferenceBody.firstChild);
+                });
+            })
+            .catch(error => console.error('Error fetching projects:', error));
+        }
+    
+        if(conferenceForm){
+            conferenceForm.addEventListener('submit', (event) => {
+                event.preventDefault();
         
+                const newConference = {
+                    conferenceContent: conferenceForm.conferenceContent.value,
+                    subdescription: conferenceForm.subdescription.value,
+                    
+                };
+                console.log("newConference",newConference);
+                window.location.href = 'index.html';
+        
+                fetch('http://localhost:1335/api/conferences/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newConference)
+                })
+                .then(response => {    
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                        console.log("conference data",data);
+                        const conferenceBlock = document.createElement('div');
+                        conferenceBlock.classList.add('academic-block', 'mb-4');
+                        conferenceBlock.innerHTML = `
+                            <div class="lucida-console h5 academic-name language mb-0">
+                                    ${data.conferenceContent}
+                            </div>
+                            <div class="pub-authors mb-4"><span class="pub-author"> Taimoor Khan </span>and Partha
+                                    ${data.subdescription}
+                                </div>
+                        `;
+                        console.log(conferenceBlock);
+                        conferenceBlock.style.marginLeft = '0';
+                        conferenceBody.appendChild(conferenceBlock);
+                        conferenceForm.reset();
+                   
+                    
+                    
+                })
+                .catch(error => console.error('Error:', error));
+                });
+        }
+        
+
+    
+
+        if(booksbody){
+            const booksList = booksbody.querySelector('ul');
+            fetch('http://localhost:1335/api/books/read')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // console.log("response",response);
+                return response.json();
+            })
+            .then(data => {
+                
+                // console.log('book Data fetched:', data);
+                data.forEach(book => {
+                    const newBook = document.createElement('li');
+                    // newBook.classList.add('academic-block','mb-4')
+
+                    newBook.innerHTML =`
+                        <div>
+                            <strong>taimoor Khan</strong> ${book.author}, <strong>“${book.description}” ${book.name}</strong>, ${book.place} ${book.isbn ? `ISBN:${book.isbn} ${book.date}`:''} ${book.subdescription ? `<p class="text-danger">(${book.subdescription})</p>` : ''}
+                            ${book.doiLink ? `
+                            <div class="mb-4">
+                                <strong>DOI: </strong>
+                                <a class="read fw-bold" href="${book.doiLink}" target="_blank">${book.doiLink}</a>
+                            </div>` : ''}
+                        </div>
+                    `;
+                    booksList.insertBefore(newBook,booksList.firstChild);
+                });
+                
+            })
+            .catch(error => console.error('Error fetching projects:', error));
+        }
+            // Handle form submission
+    if(booksForm){
+        booksForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const newBook = {
+                author:booksForm.author.value,
+                description: booksForm.description.value,
+                subdescription: booksForm.subdescription.value,
+                doiLink: booksForm.doiLink.value,
+                name:booksForm.name.value,
+                place:booksForm.place.value,
+                date:booksForm.date.value,
+                isbn:booksForm.isbn.value,
+            };
+            // console.log('newbook',newBook);
+            window.location.href = 'index.html';
+            fetch('http://localhost:1335/api/books/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newBook)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Book added:", data);
+                const newBookElement = document.createElement('li');
+                newBookElement.innerHTML = `
+                    <div>
+                        <strong>${data.author}</strong>, <strong>“${data.description}” ${data.name}</strong>  ${data.isbn ? `ISBN:${data.isbn} ${data.date}`:''}, ${data.place} <p class="text-danger">(${data.subDescription})</p>
+                        ${data.doiLink ? `
+                        <div class="mb-4">
+                            <strong>DOI: </strong>
+                            <a class="read fw-bold" href="${data.doiLink}" target="_blank">${data.doiLink}</a>
+                        </div>` : ''}
+                    </div>
+                `;
+                booksbody.insertBefore(newBookElement, booksbody.firstChild);
+                booksForm.reset();
+            })
+            .catch(error => console.error('Error submitting book:', error));
+        });
+    }    
+
+        if (bTechBody) {
+            const thesisList = bTechBody.querySelector('ul'); // Adjust selector as needed
+        
+            fetch('http://localhost:1335/api/btechthesis/read')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Sort by year in descending order
+                    data.sort((a, b) => b.startyear - a.startyear);
+        
+                    // Group thesis data by year
+                    const bTechThesisByYear = {};
+                    data.forEach(thesis => {
+                        const yearRange = `${thesis.startyear} - ${thesis.endingyear}`;
+                        if (!bTechThesisByYear[yearRange]) {
+                            bTechThesisByYear[yearRange] = [];
+                        }
+                        bTechThesisByYear[yearRange].push(thesis);
+                    });
+        
+                    // Create and insert year headers and thesis entries
+                    for (const [yearRange, thesisAll] of Object.entries(bTechThesisByYear)) {
+                        const yearHeader = document.createElement('div');
+                        yearHeader.classList.add('container', 'text-center');
+                        yearHeader.innerHTML = `<strong class="text-danger">Academic Year ${yearRange}</strong>`;
+                        thesisList.appendChild(yearHeader);
+        
+                        thesisAll.forEach((thesis, index) => {
+                            const thesisEntry = document.createElement('li');
+                            thesisEntry.innerHTML = `
+                            
+                                <p>${thesis.name}, <strong>"${thesis.description}"</strong>, ${thesis.startyear}-${thesis.endingyear}
+                                ${thesis.subdescription ? `<p>${thesis.subdescription}</p>` : ''}
+                            <hr>
+                            `;
+                            thesisList.appendChild(thesisEntry);
+                        });
+                    }
+                })
+                .catch(error => console.error('Error fetching B.Tech thesis:', error));
+        }
+        
+        // Handle new B.Tech thesis form submission
+        if (bTeckForm) {
+            bTeckForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+        
+                const newBTechThesis = {
+                    startyear: bTeckForm.startyear.value,
+                    endingyear: bTeckForm.endingyear.value,
+                    name: bTeckForm.name.value,
+                    description: bTeckForm.description.value,
+                    subdescription: bTeckForm.subdescription.value
+                };
+                window.location.href = 'index.html';
+                fetch('http://localhost:1335/api/btechthesis/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newBTechThesis)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // const newThesisEntry = document.createElement('li');
+                    // newThesisEntry.innerHTML = `
+                    //     <p>${data.name}, <strong>"${data.description}"</strong>, ${data.startyear}-${data.endingyear}
+                    //     ${data.subdescription ? `<p class="text-danger">${data.subdescription}</p>` : ''}
+                    // `;
+                    // Insert new thesis entry into the list
+                    const existingYearHeader = Array.from(bTechBody.querySelectorAll('.text-danger'))
+                        .find(header => header.textContent === data.startyear.toString());
+        
+                    if (existingYearHeader) {
+                        existingYearHeader.nextElementSibling.insertBefore(newThesisEntry, existingYearHeader.nextElementSibling.firstChild);
+                    } else {
+                        // Create a new year header if it doesn't exist
+                        const newYearHeader = document.createElement('div');
+                        newYearHeader.classList.add('container', 'text-center');
+                        newYearHeader.innerHTML = `<strong class="text-danger">Academic Year{data.startyear}-${data.endingyear}</strong>`;
+                        thesisList.insertBefore(newYearHeader, thesisList.firstChild);
+                        // const hrElement = document.createElement('hr');
+   
+                        
+                        // Add the new thesis entry
+                        const thesisListItem = document.createElement('li');
+                        thesisListItem.innerHTML = `
+                            <hr>
+                            <p>${data.name}, <strong>"${data.description}"</strong>, ${data.startyear}-${data.endingyear}
+                            ${data.subdescription ? `<p>${data.subdescription}</p>` : ''}
+                            </hr>
+                        `;
+                        thesisList.appendChild(thesisListItem);
+                    }
+        
+                    bTeckForm.reset();
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        }
+        if(mTechTableBody){
+            const mTechList = mTechTableBody.querySelector('ul');
+            fetch('http://localhost:1335/api/mtechthesis/read')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                // console.log("response",response);
+                return response.json();
+            })
+            .then(data => {
+                
+                // console.log('book Data fetched:', data);
+                data.forEach(thesis => {
+                    const newMtechThesis = document.createElement('li');
+                    // console.log(thesis.mtechThesisContent)
+                    // console.log(thesis.academicYear)
+                    // newBook.classList.add('academic-block','mb-4')
+
+                    newMtechThesis.innerHTML =`
+                    <hr>
+                        <p><strong>“${thesis.mtechThesisContent}”,</strong>,
+                                ${thesis.academicYear},
+                                ${thesis.depertment}, ${thesis.institute} </p>
+                            <p class="text-danger">(${thesis.role})</p>
+                        </hr>    
+                    `;
+                    mTechList.insertBefore(newMtechThesis,mTechList.firstChild);
+                });
+                
+            })
+            .catch(error => console.error('Error fetching projects:', error));
+        } 
+        if (mTechForm) {
+            mTechForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+        
+                const newMTechThesis = {
+                    mtechThesisContent: mTechForm.mtechThesisContent.value,
+                    academicYear: mTechForm.academicYear.value,
+                    depertment: mTechForm.depertment.value,
+                    institute: mTechForm.institute.value,
+                    role: mTechForm.role.value,
+                };
+                console.log("newMtechThesis",newMTechThesis);
+                window.location.href = 'index.html';
+                fetch('http://localhost:1335/api/mtechthesis/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newMTechThesis)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const newThesisEntry = document.createElement('li');
+                    newThesisEntry.innerHTML = `
+                        <p><strong>“${data.mtechThesisContent}”,</strong>,
+                                ${data.academicYear},
+                                ${data.depertment}, ${data.institute} </p>
+                            <p class="text-danger">(${data.role})</p>
+                    `;
+                    // Insert new thesis entry into the list
+                    mTechTableBody.appendChild(newMTechThesis);
+                   
+                    mTechForm.reset();
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        }
+        // if(mTechTableBody){
+        //     const mTechList = mTechTableBody.querySelector('ul');
+        //     fetch('http://localhost:1335/api/mtechthesis/read')
+        //     .then(response => {
+        //         if (!response.ok) {
+        //             throw new Error('Network response was not ok');
+        //         }
+        //         // console.log("response",response);
+        //         return response.json();
+        //     })
+        //     .then(data => {
+                
+        //         // console.log('book Data fetched:', data);
+        //         data.forEach(thesis => {
+        //             const newMtechThesis = document.createElement('li');
+        //             console.log(thesis.mtechThesisContent)
+        //             console.log(thesis.academicYear)
+        //             // newBook.classList.add('academic-block','mb-4')
+
+        //             newMtechThesis.innerHTML =`
+        //             <hr>
+        //                 <p><strong>“${thesis.mtechThesisContent}”,</strong>,
+        //                         ${thesis.academicYear},
+        //                         ${thesis.depertment}, ${thesis.institute} </p>
+        //                     <p class="text-danger">(${thesis.role})</p>
+        //                 </hr>    
+        //             `;
+        //             mTechList.insertBefore(newMtechThesis,mTechList.firstChild);
+        //         });
+                
+        //     })
+        //     .catch(error => console.error('Error fetching projects:', error));
+        // } 
+        if(phdthesisBody){
+            fetch('http://localhost:1335/api/phdthesis/read')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                const ongoingThesis = data.filter(thesis => thesis.status.toLowerCase() === 'ongoing');
+                const completedThesis = data.filter(thesis => thesis.status.toLowerCase() === 'completed');
+                const ongoingText = document.getElementById('ongoingText');
+                const guidedText = document.getElementById('guidedText');
+                let ongoingSection = document.querySelector('#ongoing');
+                let guidedSection = document.querySelector('#guided');
+                // if (!ongoingSection) {
+                //     ongoingSection = document.createElement('div');
+                //     ongoingSection.id = 'ongoingThesis';
+                //     ongoingSection.innerHTML = '<h2 class="text-center">Ongoing</h2>';
+                //     phdBody.appendChild(ongoingSection);
+                // }
+
+                // let completedSection = document.querySelector('#completedThesis');
+                // if (!completedSection) {
+                //     completedSection = document.createElement('div');
+                //     completedSection.id = 'completedThesis';
+                //     completedSection.innerHTML = '<h2 class="text-center">Completed</h2>';
+                //     phdBody.appendChild(completedSection);
+                // }
+
+                ongoingThesis.forEach(thesis => {
+                    const thesisEntry = document.createElement('div');
+                    thesisEntry.innerHTML = `
+                        <p>${thesis.name} (Registration Id: ${thesis.sclId}), Thesis Topic (proposed): <strong>“${thesis.phdThesisContent}”</strong>.</p>
+                        <p class="text-right text-danger ">[${thesis.role}]</p>
+                        <hr>
+                    `;
+
+                    ongoingText.insertBefore(thesisEntry,ongoingText.firstChild);
+                });
+
+                completedThesis.forEach(thesis => {
+                    const thesisEntry = document.createElement('div');
+                    thesisEntry.innerHTML = `
+                        <p>${thesis.name} (Registration Id: ${thesis.sclId}), Thesis Topic: <strong>${thesis.phdThesisContent}</strong>. (${thesis.startyear}-${thesis.endingyear})</p>
+                        <hr>
+                    `;
+                    guidedText.insertBefore(thesisEntry,guidedText.firstChild);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+        }
+        if (phdForm) {
+            phdForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+        
+                const newphdThesis = {
+                    name:phdForm.name.value,
+                    sclId:phdForm.sclId.value,
+                    status:phdForm.status.value,
+                    phdThesisContent:phdForm.phdThesisContent.value,
+                    startyear:phdForm.startyear.value,
+                    endingyear:phdForm.endingyear.value,
+                    role:phdForm.role.value,
+                };
+                // console.log("newPhdThesis",newphdThesis);
+                window.location.href = 'index.html';
+                fetch('http://localhost:1335/api/phdthesis/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newphdThesis)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const thesisStatus = data.status.toLowerCase();
+                    
+                    const newThesisEntry = document.createElement('div');
+                    if(thesisStatus==='ongoing'){
+                        newThesisEntry.innerHTML = `
+                       <p>${data.name} (Registration Id: ${data.sclId}), Thesis Topic (proposed): <strong>“${data.phdThesisContent}”</strong>. (${data.startYear}-${data.endYear})</p>
+                         <p class="text-right text-danger ">[${data.role}]</p>
+                        <hr>
+                     `
+                     let ongoingSection = document.querySelector('#ongoing');
+                if (!ongoingSection) {
+                    ongoingSection = document.createElement('div');
+                    ongoingSection.id = 'ongoingThesis';
+                    ongoingSection.innerHTML = '<h2 class="text-center">Ongoing</h2>';
+                    phdthesisBody.insertBefore(ongoingSection, phdBody.firstChild);
+                }
+                ongoingSection.insertBefore(newThesisEntry,  ongoingSection.firstChild);
+            } else {
+                newThesisEntry.innerHTML = `
+                    <p>${data.name} (Registration Id: ${data.sclId}), Thesis Topic: <strong>${data.phdThesisContent}</strong>. (${data.startYear}-${data.endYear})</p>
+                    <hr>
+                `;
+
+                let completedSection = document.querySelector('#guided');
+                if (!completedSection) {
+                    completedSection = document.createElement('div');
+                    completedSection.id = 'guided';
+                    completedSection.innerHTML = '<h2 class="text-center">Guided</h2>';
+                    phdBody.appendChild(completedSection);
+                }
+                completedSection.insertBefore(newThesisEntry, completedSection.querySelector('hr'));
+                    
+
+                    }
+                    
+                    // Insert new thesis entry into the list
+                    // mTechTableBody.appendChild(newMTechThesis);
+                   
+                    // mTechForm.reset();
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        }
+        if(collaborationContent){
+            fetch('http://localhost:1335/api/researches/read')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Clear existing rows
+                // foreignCollaborations.innerHTML = '';
+                // indianCollaborations.innerHTML = '';
+
+                data.forEach(collaboration => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                    <td>${collaboration.name}</td>
+                    <td>${collaboration.affiliation}<strong>Email:</strong> <a class="link-danger"
+                                        href="${collaboration.email}"
+                                        class="link-danger">${collaboration.email}</a></td>
+                    <td>${collaboration.collabNature}</td>
+                    `;
+                    // console.log("data",data)
+                    if (collaboration.type.toLowerCase() === 'foreign') {
+                        foreignCollaborations.insertBefore(row,foreignCollaborations.firstChild);
+                    } else if (collaboration.type.toLowerCase() === 'indian') {
+                        indianCollaborations.insertBefore(row,indianCollaborations.firstChild);
+                    }
+                });
+            })
+            .catch(error => console.error('Error fetching collaborations:', error));
+        }
+        if(reasearchForm){
+            reasearchForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+               
+                const newResearch = {
+                     name:reasearchForm.name.value,
+                     affiliation: reasearchForm.affiliation.value,
+                     email: reasearchForm.email.value,
+                     collabNature: reasearchForm.projectTitle.value,
+                     type: reasearchForm.type.value.toLowerCase(),
+                }
+
+                // console.log("newResearch",newResearch);
+                window.location.href = 'index.html';
+                const newRow = document.createElement('tr');
+                fetch('http://localhost:1335/api/researches/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newResearch)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data =>{
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                    <td>${newResearch.name}</td>
+                    <td>${newResearch.affiliation}<strong>Email:</strong> <a class="link-danger"
+                                        href="${newResearch.email}"
+                                        class="link-danger">${newResearch.email}</a></td>
+                    <td>${newResearch.collabNature}</td>
+                   `;
+                if (type === 'foreign') {
+                    foreignCollaborations.insertBefore(newRow, foreignCollaborations.firstChild);
+                } else if (type === 'indian') {
+                    indianCollaborations.insertBefore(newRow, indianCollaborations.firstChild);
+                }
+                reasearchForm.reset();
+                })
+                 // Clear the form
+            });
+        }
+        
+        if(ieeeContent){
+        
+            fetch('http://localhost:1335/api/ieeeservices/read')
+            .then(response => response.json())
+            .then(data => {
+                data.sort((a, b) =>a.year - b.year);
+                // console.log('Data fetched:', data);
+                data.forEach(service => {
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <th scope="row">${service.year}</th>
+                        <td>${service.description}</td>
+                        <td>${service.branch}</td>
+                    `;
+                    // console.log('row', row);
+                    ieeeContent.insertBefore(row, ieeeContent.firstChild);
+                });
+            });
+        }
+        if(serviceForm){
+            serviceForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                
+                const newService = {
+                    year: serviceForm.year.value,
+                    description: serviceForm.description.value,
+                    branch: serviceForm.branch.value
+                };
+                // console.log("newAward",newAward);
+                window.location.href = 'index.html';
+                
+                fetch('http://localhost:1335/api/ieeeservices/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newService)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <th scope="row">${data.year}</th>
+                        <td>${data.description}</td>
+                        <td>${data.branch}</td>
+                    `;
+                    awardsTableBody.insertBefore(row, awardsTableBody.firstChild);
+                    window.location.href = 'index.html';
+                    // form.reset();
+                })
+                .catch(error => console.error('Error:', error));
+            });
+        }
+        if(talksList){
+            console.log('talks',talksList)
+            fetch('http://localhost:1335/api/invitedtalk/read')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(talk => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${talk.description}</td>`;
+                    talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
+                    row.style.backgroundColor = 'white';
+                    row.style.color = 'black';
+                });
+            })
+            .catch(error => console.error('Error fetching talks:', error));
+        }
+
+
+    // Handle form submission
+    if (talksForm) {
+        talksForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const newTalk = {
+                year: parseInt(talksForm.year.value, 10),
+                description: talksForm.description.value
+            };
+            window.location.href = 'index.html'
+            fetch('http://localhost:1335/api/invitedtalk/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newTalk)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Talk added:", data);
+                const row = document.createElement('tr');
+                
+                
+                row.innerHTML = `<td>${data.description}</td>`;
+                talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
+                talksForm.reset();
+            })
+            .catch(error => console.error('Error submitting talk:', error));
+        });
+    }
 });
+            
+        
+        
+
+    

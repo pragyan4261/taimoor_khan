@@ -17,16 +17,16 @@
     <meta name="robots" content="index,follow" />
 
     <!-- Styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- <link href="https://cdn.theses.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
-    <link href="books.html">
 
-    <script defer src="index.js"></script>
-    <script defer src="books.js"></script> <!-- Include books.js here -->
+    <script src="index.js" defer></script>
+    <!-- <script defer src="books.js"></script> Include books.js here -->
 
 </head>
 
@@ -494,11 +494,16 @@
             <!-- Publications -->
             <!-- Journals -->
             <div class="col-md-8 offset-md-1 mb-5" id="journalsContent">
-                <div class="container">
+                <div class="container" >
                     <div class="row mt-1">
                         <h2 class="pub-year-h2">JOURNALS</h2>
-                        <div class="h4">2024</div>
-                        <div class="academic-block mb-4">
+                        <div  id="journalsContainer">
+
+                        </div>
+                        
+                        
+                        <!-- <div class="h4"  >2024</div>
+                        <div class="academic-block mb-4" >
 
                             <div>
                                 <strong>1.</strong> Sounik Kiran Kumar Dash, Qingsha S. Cheng, <strong>Taimoor
@@ -511,12 +516,12 @@
                                 <a class=" read fw-bold" href="https://doi.org/10.1002/mop.33982"
                                     target="_blank">https://doi.org/10.1002/mop.33982</a>
                             </div>
-                        </div>
+                        </div> -->
 
 
 
 
-                        <div class="h4">2023</div>
+                        <!-- <div class="h4">2023</div>
                         <div class="academic-block mb-4">
 
                             <div>
@@ -711,11 +716,11 @@
                                     target="_blank">https://doi.org/10.1109/MMM.2022.3211594</a>
                             </div>
 
-                        </div>
+                        </div> -->
 
 
 
-                        <div class="h4">2022</div>
+                        <!-- <div class="h4">2022</div>
                         <div class="academic-block mb-4">
                             <div>
                                 <strong>1.</strong> Partha P. Shome, Taimoor Khan, Binod K Kanaujia, Ahmed A. Kishk, and
@@ -1468,7 +1473,7 @@
                         <div class="h4">2013</div>
                         <div class="academic-block mb-4">
                             <div>
-                                <strong>3.</strong> Taimoor Khan, Asok De and Moinuddin, “Prediction of Slot-Size and
+                                <strong></strong> Taimoor Khan, Asok De and Moinuddin, “Prediction of Slot-Size and
                                 Inserted Air-Gap for Improving the Performance of Rectangular Microstrip Antennas using
                                 Artificial Neural Networks”, IEEE Antennas and Wireless Propagation Letters, Vol. 12,
                                 No. 1, Oct. 2013, pp. 1367-1371.
@@ -1477,9 +1482,10 @@
                                 <strong>DOI: </strong>
                                 <a class="read fw-bold" href="http://doi.org/10.1109/LAWP.2013.2285381"
                                     target="_blank">http://doi.org/10.1109/LAWP.2013.2285381</a>
-                            </div>
+                             </div>
 
-                        </div>
+                        </div> -->
+                          
                     </div>
                 </div>
             </div>
@@ -1502,32 +1508,39 @@
             <div class="col-md-8 offset-md-1 mb-5" id="booksContent">
                 <div class="container">
                     <div class="row mt-1">
-                        <h2 class="pub-year-h2">BOOKS</h2>
-                        <div class="academic-block mb-4">
-                            <div> <strong>1. Taimoor Khan</strong> and Ahmed A. Kishk, <strong>“Computational
-                                    Intelligence Modeling for Radio-Frequency Planar
-                                    Circuit Problems: A Beginner’s Guide” Nova Publishers</strong>, USA <p
-                                    class="text-danger">(To be published
-                                    in Feb 2024)</p>
-                            </div>
+                    <h2 class="pub-year-h2">BOOKS</h2>
+                     <div class="academic-block mb-4" id="booksbody">
+                        <ul>
+                            <!-- <li>
+                                <div> 
+                                    <strong>Taimoor Khan</strong> and Ahmed A. Kishk, <strong>“Computational
+                                        Intelligence Modeling for Radio-Frequency Planar
+                                        Circuit Problems: A Beginner’s Guide” Nova Publishers</strong>, USA <p
+                                        class="text-danger">(To be published
+                                        in Feb 2024)</p>
+                                 </div>
+                            </li>
 
+                            <li>
+                                <div> <strong>Taimoor Khan</strong>, Binod Kumar Kanaujia and Sembiam R. Rengarajan,
+                                    <strong>“Printed Microwave Components for
+                                        5G Wireless Applications” Elsevier Springer</strong>
+                                    <p class="text-danger">(To be published in March/April
+                                        2024)</p>
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <div>
+                                    <strong> </strong>Javaid A. Sheik, <strong>Taimoor Khan</strong> and Binod Kumar
+                                    Kanaujia, <strong>“Intelligent Signal Processing and RF
+                                        Energy Harvesting for state of art 5G and B5G Networks”, Springer Nature</strong>
+                                    <p class="text-danger">(In Press)</p>
+                                </div>
+                        </li>
 
-                            <div> <strong>2. Taimoor Khan</strong>, Binod Kumar Kanaujia and Sembiam R. Rengarajan,
-                                <strong>“Printed Microwave Components for
-                                    5G Wireless Applications” Elsevier Springer</strong>
-                                <p class="text-danger">(To be published in March/April
-                                    2024)</p>
-                            </div>
-
-
-                            <div><strong>3. </strong>Javaid A. Sheik, <strong>Taimoor Khan</strong> and Binod Kumar
-                                Kanaujia, <strong>“Intelligent Signal Processing and RF
-                                    Energy Harvesting for state of art 5G and B5G Networks”, Springer Nature</strong>
-                                <p class="text-danger">(In Press)</p>
-                            </div>
-
-
-                            <div> <strong>4. Taimoor Khan</strong> and Yahia M.M. Antar,<strong> “Band-Notch
+                        <li>
+                            <div> <strong>Taimoor Khan</strong> and Yahia M.M. Antar,<strong> “Band-Notch
                                     Characteristics in Ultra-Wideband Antennas”, CRC
                                     Press, T& F Group, Florida, USA</strong>, 2021, ISBN: 9780367754723, 9th June 2021.
                             </div>
@@ -1536,8 +1549,10 @@
                                 <a class=" read fw-bold" href="https://doi.org/10.1201/9781003163008"
                                     target="_blank">https://doi.org/10.1201/9781003163008</a>
                             </div>
+                        </li>
 
-                            <div> <strong>5. Taimoor Khan</strong>, Nasimuddin and Yahia M.M. Antar, <strong>“Elements
+                        <li>
+                            <div> <strong>Taimoor Khan</strong>, Nasimuddin and Yahia M.M. Antar, <strong>“Elements
                                     of Radio Frequency Energy Harvesting
                                     and Wireless Power Transfer Systems”, CRC Press, Taylor & Francis Group, Florida,
                                     USA</strong>, 2020,
@@ -1547,8 +1562,9 @@
                                 <a class=" read fw-bold" href="https://doi.org/10.1201/9780429283918"
                                     target="_blank">https://doi.org/10.1201/9780429283918</a>
                             </div>
-                        </div>
-
+                        </li>     -->
+                    </ul>
+                 </div>
 
 
                     </div>
@@ -1569,11 +1585,11 @@
                 </div>
             </div>
             <!-- Conferences -->
-            <div class="col-md-8 offset-md-1 mb-5" id="conferencesContent">
+            <div class="col-md-8 offset-md-1 mb-5" >
                 <div class="container">
-                    <div class="row mt-3">
+                    <div class="row mt-3" id="conferencesContent">
                         <h2 class="pub-year-h2">CONFERENCES</h2>
-                        <div class="academic-block mb-4">
+                        <div class="academic-block mb-4" id="conferenceBody">
                             <!-- 2023 -->
                             <div class="lucida-console h5 academic-name language mb-0">
 
@@ -2325,7 +2341,7 @@
                     <table class="table table-bordered  table-bg ">
                         <thead>
                             <tr>
-                                <th scope="col" rowspan="2">S. No.</th>
+                                
                                 <th scope="col" rowspan="2">Institute</th>
                                 <th scope="col" rowspan="2">Designation</th>
                                 <th scope="col" colspan="3">Period</th>
@@ -2340,10 +2356,10 @@
                             <thead>
                                 <th colspan="7">National Academic Experience</th>
                             </thead>
-                        <tbody>
+                        <tbody id="adminExpBody">
 
                             <tr>
-                                <th scope="row" rowspan="3">1</th>
+                                
                                 <td rowspan="3">National Institute of Technology Silchar, Assam <p>(Institute Level
                                         Responsibilities)</p>
                                 </td>
@@ -2362,7 +2378,7 @@
 
                             </tr>
                             <tr>
-                                <th scope="row" rowspan="4">2</th>
+                                
                                 <td rowspan="4">National Institute of Technology Silchar, Assam <p>(Department Level
                                         Responsibilities)</p>
                                 </td>
@@ -2387,7 +2403,7 @@
 
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
+                                
                                 <td>Netaji Subhas Institute of Technology Patna, Bihar </td>
                                 <td>HOD, ECE Dept. </td>
                                 <td>03-06-2013 </td>
@@ -2410,7 +2426,7 @@
                     <table class="table table-bordered  table-bg table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">S.No.</th>
+                                <!-- <th scope="col">S.No.</th> -->
                                 <th scope="col">Name of Professor </th>
                                 <th scope="col">Affiliation </th>
                                 <th scope="col">Nature of Collaboration </th>
@@ -2422,9 +2438,9 @@
                                     <td colspan="4"><strong>Foreign Collaborations </strong></td>
                                 </tr>
                             </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
+                        <tbody id="foreignCollaborations">
+                            <!-- <tr>
+                               
                                 <td>Prof. Sembiam R. Rengarajan, Life Fellow IEEE </td>
                                 <td>Department of Electrical and Computer Engineering, California State University
                                     Northridge,
@@ -2437,7 +2453,7 @@
                                 <td>VAJRA Project(2020-2023)</td>
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
+                                
                                 <td>Prof. Yahia M.M. Antar,
 
                                     Life Fellow IEEE </td>
@@ -2453,7 +2469,7 @@
                                     (2019-2023) </td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
+                                
                                 <td>Prof. Alois P. Freundorfer</td>
                                 <td>Department of Electrical and Computer Engineering, Queen's University, Kingston,
                                     Ontario, Canada,
@@ -2467,7 +2483,7 @@
                                     (2019-2023) </td>
                             </tr>
                             <tr>
-                                <th scope="row">4</th>
+                                
                                 <td>Dr. Nasimuddin, Scientist </td>
                                 <td>Institute for Infocomm Research (I2R), Academy for Science, Technology and
                                     Research
@@ -2482,7 +2498,7 @@
                             </tr>
 
                             <tr>
-                                <th scope="row">5</th>
+                                
                                 <td>Prof. Ahmed A. Kishk
 
                                     Life Fellow </td>
@@ -2490,8 +2506,8 @@
 
                                     Concordia University, Canada, <strong>Email:</strong> <a class="link-danger"
                                         href="mailto:kishk@ece.concordia.ca">kishk@ece.concordia.ca</a> </td>
-                                <td>Research Collaboration </td>
-                            </tr>
+                                <td>Research Collaboration </td> -->
+                            <!-- </tr> -->
 
                         </tbody>
                         <thead>
@@ -2499,9 +2515,9 @@
                                 <td colspan="4"><strong>Indian Collaborations </strong></td>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">6</th>
+                        <tbody id="indianCollaborations">
+                            <!-- <tr>
+                                
                                 <td>Prof. Binod Kumar Kanaujia
 
                                     Director, NIT Jalandhar </td>
@@ -2514,7 +2530,7 @@
                                     (2019-2023) </td>
                             </tr>
                             <tr>
-                                <th scope="row">7</th>
+                               
                                 <td>Prof. Asok De
 
                                     (Ex-Director, NIT Patna) </td>
@@ -2526,7 +2542,7 @@
                                     (2019-2023) </td>
                             </tr>
                             <tr>
-                                <th scope="row">8</th>
+                                
                                 <td>Prof. Shiban K. Koul, (Emeritus Professor)
 
                                     Life Fellow IEEE </td>
@@ -2535,7 +2551,7 @@
                                     Delhi, India, <strong>Email:</strong> <a class="link-danger"
                                         href="mailto:shiban_koul@hotmail.com">shiban_koul@hotmail.com</a> </td>
                                 <td>Research Collaboration </td>
-                            </tr>
+                            </tr> -->
 
                         </tbody>
                         </tbody>
@@ -2547,17 +2563,17 @@
             <div class="col-md-8 offset-md-1 mb-5 " id="talksContent">
                 <div class="container my-3 text-center table-responsive">
                     <h4 id="hobbiesH4" class="mt-2">Technical Talks</h4>
-                    <table class="table table-bordered  table-bg">
-                        <thead>
+                    <table class="table table-bordered table-bg" id="talksList">
+                        <!-- <thead>
                             <td colspan="2"><strong>Delivered in Calendar Year 2023 </strong></td>
-                        </thead>
+                        </thead> -->
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Invited Speaker, Topic-1: <strong> Vector Calculus (12 June 2023), Topic-2:
+                            <!-- <tr>
+                               
+                                <td>Invited Speaker, Topic-1:  Vector Calculus (12 June 2023), Topic-2:
                                         Electrostatics (12 June 2023) and Topic-3: Magnetostatics (13 June
-                                        2023)</strong>, in SERB Sponsored VAJRA Course on <strong>Fundamentals of
-                                        Electromagnetics (EMF-2023)</strong>, Jointly Organized by National
+                                        2023), in SERB Sponsored VAJRA Course on Fundamentals of
+                                        Electromagnetics (EMF-2023), Jointly Organized by National
                                     Institute of
                                     Technology Silchar (India), Jawaharlal Nehru University Delhi (India) and
                                     California
@@ -2571,23 +2587,23 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">2</th>
-                                <td>Invited Speaker, Topic: <strong> Machine Learning Assisted Electromagnetic
+                                
+                                <td>Invited Speaker, Topic:  Machine Learning Assisted Electromagnetic
                                         Framework
-                                        for Modeling and Optimization of Antenna Application (6 June 2023)</strong>
+                                        for Modeling and Optimization of Antenna Application (6 June 2023)
                                     in
-                                    SERB Sponsored High-End Workshop (Karyashala) on <strong>Futuristic Trends in
+                                    SERB Sponsored High-End Workshop (Karyashala) on Futuristic Trends in
                                         Microwave and Millimeter Wave Technologies: An ML Approach
-                                        (FMMT-2023)</strong>,
+                                        (FMMT-2023),
                                     Organized by Department of Electronics and Communication Engineering, National
                                     Institute of Technology Silchar, India June 1-7, 2023.
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">3</th>
-                                <td>Invited Speaker, Topic: <strong>Facet-Loaded Dielectric Resonator based Rectenna
+                                
+                                <td>Invited Speaker, Topic: Facet-Loaded Dielectric Resonator based Rectenna
                                         Design for Multi-Source RF Energy Harvesting Applications”, (14 May
-                                        2023)</strong>, SERB funded Karyashala
+                                        2023), SERB funded Karyashala
                                     on “Hands-on Training on Design, Fabrication and Testing of 5G Antenna Using
                                     Machine
                                     Learning”
@@ -2597,7 +2613,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th scope="row">4</th>
+                               
                                 <td>Invited Speaker, Topic: <strong>“RF Energy Harvesting for Making
                                         Self-sustainable
                                         Batteryless Internet of Things (IoT)/Wireless Devices/Sensor Nodes” (18 Feb
@@ -2611,9 +2627,9 @@
                                     Information Technology (MeitY), Govt of India.
 
                                 </td>
-                            </tr>
+                            </tr> -->
                         </tbody>
-                        <thead>
+                        <!-- <thead>
                             <td colspan="2"><strong>Delivered in Calendar Year 2022 </strong></td>
                         </thead>
                         <tbody>
@@ -2900,7 +2916,7 @@
                                     6-7,
                                     2009.</td>
                             </tr>
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
             </div>
@@ -2909,9 +2925,9 @@
             <div class="col-md-8 offset-md-1 mb-5 " id="projectsContent">
                 <div class="container my-3 text-center table-responsive">
                     <h4 id="hobbiesH4" class="mt-2">Projects</h4>
-                    <table class="table table-bordered  table-bg">
+                    <table class="table table-bordered  table-bg" id="projectTable">
                         <thead>
-                            <th scope="col">S.No. </th>
+                            <!-- <th scope="col">S.No. </th> -->
                             <th scope="col">Name and Role of Investigator </th>
                             <th scope="col">Foreign Collaborator</th>
                             <th scope="col">Project Title </th>
@@ -2919,14 +2935,15 @@
                             <th scope="col">Sanctioned Fund and Status</th>
 
                         </thead>
-                        <tbody>
-
-                            <thead>
-                                <th colspan="6"><strong class="text-danger">Ongoing</strong></th>
-                            </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
+                        
+                        <thead>
+                            <th colspan="6"><strong class="text-danger">Ongoing</strong></th>
+                        </thead>
+                        
+                        <tbody id="projectTableBody">
+                        <tbody id="ongoingProjectsBody">
+                            <!-- <tr>
+                                
                                 <td>Taimoor Khan, Mentor </td>
                                 <td></td>
                                 <td>Circularly Polarized Electrically Small Efficient Rectenna Design for Wireless
@@ -2938,7 +2955,7 @@
                             </tr>
 
                             <tr>
-                                <th scope="row">2</th>
+                                
                                 <td>Taimoor Khan,<strong> Lead Indian Collaborator</strong> </td>
                                 <td>Prof. Sembiam R. Rengarajan, California State University Northridge, USA</td>
                                 <td>Some Investigations on Design and Development of Efficient Printed Components
@@ -2950,7 +2967,7 @@
                             </tr>
 
                             <tr>
-                                <th scope="row">3</th>
+                                
                                 <td>Taimoor Khan, <strong>Indian Principal Investigator</strong> </td>
                                 <td>Prof. Yahia M.M. Antar and Prof. Al. P. Freundorfer,Queen’s University Canada
                                 </td>
@@ -2962,7 +2979,7 @@
 
                             </tr>
                             <tr>
-                                <th scope="row">4</th>
+                                
                                 <td>Taimoor Khan, Mentor </td>
                                 <td></td>
                                 <td>Circularly Polarized Electrically Small Efficient Rectenna Design for Wireless
@@ -2979,7 +2996,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">5</th>
+                                
                                 <td>Taimoor Khan, Mentor </td>
 
                                 <td colspan="2">Circularly Polarized Electrically Small Efficient Rectenna Design
@@ -2987,16 +3004,16 @@
                                     Wireless Power Transferred IoT Devices </td>
                                 <td>IEEE, USA </td>
                                 <td>3000 USD Ongoing </td>
-                            </tr>
+                            </tr> -->
 
                         </tbody>
                         <thead>
                             <th colspan="6"><strong class="text-danger">Completed (Minor Funded Project) </strong>
                             </th>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">6</th>
+                        <tbody id="completedProjectsBody">
+                            <!-- <tr>
+                               
                                 <td>Taimoor Khan
 
                                     <strong>Principal Investigator</strong>
@@ -3014,7 +3031,7 @@
                                     (2017-2022)</td>
                             </tr>
                             <tr>
-                                <th scope="row">7</th>
+                                
                                 <td>Taimoor Khan
 
                                     <strong>Course Coordinator</strong>
@@ -3029,7 +3046,7 @@
                                 <td>INR 5.44 Lakh
 
                                     (13-17 Nov 2017) </td>
-                            </tr>
+                            </tr> -->
 
                         </tbody>
 
@@ -3041,10 +3058,12 @@
             <!-- Supervision -->
             <!-- phd -->
             <div class="col-md-8 offset-md-1 mb-5 " id="phdContent">
-                <div class="container my-3">
-                    <h4 id="hobbiesH4" class="mt-2">M. Tech. Dissertations (Guiding/Guided) </h4>
-                    <h2 class="text-center">Ongoing</h2>
-                    <p>Mamoni Saha (Registration Id: 20-3-04-137), Thesis Topic (proposed): <strong>“Antenna Design
+                <div class="container my-3" id="phdthesisBody">
+                    <h4 id="hobbiesH4" class="mt-2">PHD Dissertations (Guiding/Guided) </h4>
+                    <div id="ongoing">
+                    <h2 class="text-center" >Ongoing</h2>
+                    <div id="ongoingText">
+                    <!-- <p>Mamoni Saha (Registration Id: 20-3-04-137), Thesis Topic (proposed): <strong>“Antenna Design
                             and
                             Prototype Development with Characterization for RF Energy Harvesting and Wireless Power
                             Transfer Applications in 5G Millimeter Wave Environment”</strong>.</p>
@@ -3072,11 +3091,14 @@
                     </p>
 
                     <p class="text-danger">[Sole Supervisor]
-                    </p>
-                    <hr>
+                    </p> -->
+                    <!-- <hr> -->
+                </div>
+                </div>
+                <div id="guided">
                     <h2 class="text-center">Guided</h2>
-
-                    <p>Md. Ahsan Halimi (Registration Id: 19-3-04-105), Thesis Topic: <strong>Design and Development
+                    <div id="guidedText">
+                    <!-- <p>Md. Ahsan Halimi (Registration Id: 19-3-04-105), Thesis Topic: <strong>Design and Development
                             of
                             Efficient
                             Rectifier Circuits for RF Energy Harvesting and Wireless Power Transfer
@@ -3130,328 +3152,451 @@
                     </p>
 
                     <p class="text-danger">[Sole-Supervisor]</p>
-                    <hr>
+                    <hr> -->
                 </div>
             </div>
+             </div>
+            </div>
+                        <!-- Awards -->
+                        <div class="col-md-8 offset-md-1 mb-5 " id="awardsContent">
 
+                            <div class="container my-3 text-center table-responsive">
+                                <h4 id="hobbiesH4" class="mt-2">Award, Honours, etc. Received: </h4>
+                                <table class="table table-bordered  table-bg">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Year</th>
+                                            <th scope="col">Name of Award/Recognition </th>
+                                            <th scope="col">Awarded By </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="awardsTableBody">
+                                        <tr>
+                                            <th scope="row">2020</th>
+                                            <td>IETE-Prof. SVC Aiya Memorial Award 2020 </td>
+                                            <td>IETE New Delhi, India </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2009</th>
+                                            <td>Certificate of Excellence (For Getting Highest Score in M. Tech.) </td>
+                                            <td>Shobhit Institute of Engineering and Technology
+            
+                                                (A Deemed to be University) Meerut, U.P. </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2001</th>
+                                            <td>Topper (3rd Year) in Polytechnic Diploma </td>
+                                            <td>Government Polytechnic Saharanpur, U.P., India </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2000</th>
+                                            <td>Topper (2nd Year) in Polytechnic Diploma </td>
+                                            <td>Government Polytechnic Saharanpur, U.P., India </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1999</th>
+                                            <td>Topper (1st Year) in Polytechnic Diploma </td>
+                                            <td>Government Polytechnic Saharanpur, U.P., India </td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">1988</th>
+                                            <td>College Topper in Intermediate </td>
+                                            <td>National Public Inter College, Jalalabad, District- Muzaffarnagar, U.P., India
+                                            </td>
+                                        </tr>
+            
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
             <!-- Mtech -->
             <div class="col-md-8 offset-md-1 mb-5 " id="mtechContent">
-                <div class="container my-3">
+                <div class="container my-3" id="mTechThesisBody">
                     <h4 id="hobbiesH4" class="mt-2">M. Tech. Dissertations (Guiding/Guided) </h4>
-                    <p>1. Rajesh Das, <strong>“Design of a Millimeter-Wave Rectenna for Energy Harvesting”</strong>,
-                        2021-2022, ECE
-                        Dept., NIT Silchar, Assam, India. </p>
-                    <p class="text-danger">(Joint Supervisor)</p>
+                    <ul>
+                        <!-- <li                            
+                        <p><strong>“Design of a Millimeter-Wave Rectenna for Energy Harvesting”</strong>,
+                                2021-2022, ECE
+                                Dept., NIT Silchar, Assam, India. </p>
+                            <p class="text-danger">(Joint Supervisor)</p>
+                        </li>
+
                     <hr>
-                    <p>2. Anandi Dutta, <strong>“End to End Malaria Disease Detection using Deep Learning
-                            Techniques”</strong>,
-                        2021-2022, ECE Dept, NIT Silchar, Assam, India. </p>
-                    <p class="text-danger">(Joint Supervisor)</p>
+                        <li>
+                            <p><strong>“End to End Malaria Disease Detection using Deep Learning
+                                Techniques”</strong>,
+                            2021-2022, ECE Dept, NIT Silchar, Assam, India. </p>
+                        <p class="text-danger">(Joint Supervisor)</p>
+                        </li>
+                    
                     <hr>
-                    <p>3. Karnati Saikiran, <strong>“Design and Development of Efficient Rectifier Circuits using
-                            Graphene
-                            Technology for Low Power Sensors Applications”</strong>, 2020-2021, ECE Dept., NIT
-                        Silchar,
-                        Assam, India
-                    </p>
-                    <p class="text-danger">(Joint Supervisor).</p>
+                    <li>
+                        <p><strong>“Design and Development of Efficient Rectifier Circuits using
+                                Graphene
+                                Technology for Low Power Sensors Applications”</strong>, 2020-2021, ECE Dept., NIT
+                            Silchar,
+                            Assam, India
+                        </p>
+                      
+                        <p class="text-danger">(Joint Supervisor).</p>
+                    </li>  
                     <hr>
-                    <p>4. Manumanthu Sureshkumar, <strong>“Design and Development of Efficient Rectifier Circuits
-                            using
-                            CMOS
-                            Technology for Low Power Sensors Applications”</strong>, 2020-2021, ECE Dept., NIT
-                        Silchar,
-                        Assam, India
-                    </p>
-                    <p class="text-danger">(Joint Supervisor).</p>
+                    <li>
+                        <p><strong>“Design and Development of Efficient Rectifier Circuits
+                                using
+                                CMOS
+                                Technology for Low Power Sensors Applications”</strong>, 2020-2021, ECE Dept., NIT
+                            Silchar,
+                            Assam, India
+                        </p>
+                        <p class="text-danger">(Joint Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>5. Sanoj Mahato, <strong>“Band Notch Characteristics in Ultra-wideband MIMO
-                            Antennas”</strong>,
-                        2019-2020, ECE
+                    <li>
+                        <p><strong>“Band Notch Characteristics in Ultra-wideband MIMO
+                                Antennas”</strong>,
+                            2019-2020, ECE
                         Dept., NIT Silchar, Assam, India </p>
-                    <p class="text-danger">(Joint Supervisor).</p>
+                        <p class="text-danger">(Joint Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>6. Saurabh Kumar, <strong>“Design and Development of Triple Band EBG-Loaded UWB
+                    <li>
+                        <p><strong>“Design and Development of Triple Band EBG-Loaded UWB
                             Antennas”</strong>, 2017-2018, ECE
                         Dept., NIT Silchar, Assam, India </p>
-                    <p class="text-danger">(Supervisor).</p>
+                        <p class="text-danger">(Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>7. Sweety Kumari, <strong>“Wideband Slotted Antenna using Graphene Technology for Terahertz
-                            Communication”</strong>, 2016-2017, ECE Dept., NIT Silchar, Assam, India </p>
-                    <p class="text-danger">(Supervisor).</p>
+                    <li>
+                        <p><strong>“Wideband Slotted Antenna using Graphene Technology for Terahertz
+                                Communication”</strong>, 2016-2017, ECE Dept., NIT Silchar, Assam, India </p>
+                        <p class="text-danger">(Supervisor).</p>
+                     </li>
                     <hr>
-                    <p>8. Chandan Roy, <strong>“SVM Modeling for Computing Performance Parameters of Microstrip
+                    <li>
+                        <p><strong>“SVM Modeling for Computing Performance Parameters of Microstrip
                             Antennas”</strong>,
                         2015-2016, ECE Dept., NIT Silchar, Assam, India </p>
-                    <p class="text-danger">(Supervisor).</p>
+                        <p class="text-danger">(Supervisor).</p>
+                    </li>
+                    
                     <hr>
-                    <p>9. Arcade NSHIMIYIMANA, <strong>“Investigation of Clustering Techniques and Throughput
-                            Analysis
-                            for
-                            Vehicular Communication in 5G”</strong>, 2015-2016, ECE Dept., NIT Silchar, Assam, India
-                    </p>
-                    <p class="text-danger">(Co-Supervisor).
-                    </p>
+                    <li>
+                        <p><strong>“Investigation of Clustering Techniques and Throughput
+                                Analysis
+                                for
+                                Vehicular Communication in 5G”</strong>, 2015-2016, ECE Dept., NIT Silchar, Assam, India
+                        </p>
+                        <p class="text-danger">(Co-Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>10. Prabhat Sharma, <strong>“Design of Microstrip Antenna using DGS Structure”</strong>,
-                        2012-2013, Shobhit
-                        University Meerut, U.P. </p>
-                    <p class="text-danger">(Supervisor).</p>
+                    <li>
+                        <p><strong>“Design of Microstrip Antenna using DGS Structure”</strong>,
+                            2012-2013, Shobhit
+                            University Meerut, U.P. </p>
+                        <p class="text-danger">(Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>11. Arjun Singh, <strong>“Design of YAGI-UDA Microstrip Antenna using EBG
-                            Structure”</strong>,
-                        2012-2013, Shobhit
-                        University Meerut, U.P. </p>
-                    <p class="text-danger">(Supervisor).</p>
+                    <li>
+                        <p><strong>“Design of YAGI-UDA Microstrip Antenna using EBG
+                                Structure”</strong>,
+                            2012-2013, Shobhit
+                            University Meerut, U.P. </p>
+                        <p class="text-danger">(Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>12. Arun Kumar, <strong>“Design of MIMO Antenna using EBG Structures”</strong>, 2012-2013,
-                        Shobhit University
-                        Meerut, U.P. </p>
-                    <p class="text-danger">(Supervisor).</p>
+                    <li>
+                        <p><strong>“Design of MIMO Antenna using EBG Structures”</strong>, 2012-2013,
+                            Shobhit University
+                            Meerut, U.P. </p>
+                        <p class="text-danger">(Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>13. Prabhat Ranjan Mishra, <strong>“Design of Microstrip Antenna using Fractal
-                            Geometry”</strong>, 2011-2012,
-                        Shobhit University Meerut, U.P. </p>
-                    <p class="text-danger">(Supervisor).</p>
+                    <li>
+                        <p><strong>“Design of Microstrip Antenna using Fractal
+                                Geometry”</strong>, 2011-2012,
+                            Shobhit University Meerut, U.P. </p>
+                        <p class="text-danger">(Supervisor).</p>
+                    </li>
                     <hr>
-                    <p>14. Manish Kumar Savita, <strong>“Design and Optimization of Circularly Polarized Tri-mode
-                            Matched Feed
-                            for Parabolic Reflector”</strong>, Shobhit University Meerut, U.P. </p>
-                    <p class="text-danger">(Supervisor)</p>
+                    <li>
+                        <p><strong>“Design and Optimization of Circularly Polarized Tri-mode
+                                Matched Feed
+                                for Parabolic Reflector”</strong>, Shobhit University Meerut, U.P. </p>
+                        <p class="text-danger">(Supervisor)</p>
+                    </li>
                     <hr>
-                </div>
-
+                 -->
+                </ul>
+            </div>
             </div>
 
+            
             <!-- btech -->
             <div class="col-md-8 offset-md-1 mb-5 " id="btechContent">
-                <div class="container my-3">
+                <div class="container my-3" id="b.techBody">
                     <h4 id="hobbiesH4" class="mt-2">B. Tech. Projects </h4>
-                    <div class="container text-center"><strong class="text-danger">Academic Year 2021-2022</strong>
-                    </div>
-                    <p><strong>1.</strong>Tanmoy Roy, <strong>“Rectenna Design for Millimeter Wave
-                            Communication”</strong>, 2021-2022, ECE Dept., NIT
-                        Silchar.</p>
+                    <ul>
+                    <!-- <div class="container text-center" id="academicYear"><strong class="text-danger">Academic Year 2021-2022</strong>
+                    </div> -->
+                    <!-- <li><p><Tanmoy Roy, <strong>“Rectenna Design for Millimeter Wave
+                        Communication”</strong>, 2021-2022, ECE Dept., NIT
+                    Silchar.</p></li>
+                    
                     <hr>
-                    <p><strong>2. </strong>Swrjima Rano Boro, <strong>“Ultra-Wideband Radar Technology for Wireless
-                            Applications”</strong>, 2021-2022, ECE
-                        Dept., NIT Silchar.</p>
+                    <li>Swrjima Rano Boro, <strong>“Ultra-Wideband Radar Technology for Wireless
+                        Applications”</strong>, 2021-2022, ECE
+                    Dept., NIT Silchar.</p></li>
+                    
                     <hr>
-                    <p><strong>3.
-                        </strong>
+                    <li>
+                    <p>
                         Sai Charan Nallan, <strong>“Wireless Power Transfer Technology for Biomedical
                             Applications”</strong>, 2021-2022,
                         ECE
                         Dept., NIT Silchar.</p>
+                    </li>    
                     <hr>
-                    <p><strong>4.
-                        </strong>
+                    <li>
+                    <p>
                         Sayandeep Roy, <strong>“CMOS Rectifier for RF Energy Harvesting”</strong>, 2021-2022, ECE
                         Dept.,
                         NIT Silchar.</p>
+                    </li>    
                     <hr>
-                    <p><strong>5.
-                        </strong>
+                    <li>
+                    <p>
                         Manda Sai Kiran Reddy, <strong>“Rectenna Design for Sub 6 GHz 5G Applications”</strong>,
                         2021-2022, ECE Dept.,
                         NIT
                         Silchar.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2020-2021</strong>
                     </div>
-                    <p><strong>6.
-                        </strong>
+                    <li>
+                    <p>
                         Rajarshi Singha, <strong>“Wireless Power Transfer”</strong>, 2020-2021, ECE Dept., NIT
                         Silchar,
                         Assam, India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>7.
-                        </strong>
+                    <li>
+                    <p>
                         Nikhil Nagrath, <strong>“Ground Penetrating Radar and its Applications”</strong>, 2020-2021,
                         ECE
                         Dept., NIT
                         Silchar,
                         Assam, India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>8.
-                        </strong>
+                    <li>
+                    <p>
                         Ankur Jyoti Nath, <strong>“RF Energy Harvesting in 5G Networks”</strong>, 2020-2021, ECE
                         Dept.,
                         NIT Silchar,
                         Assam,
                         India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>9.
-                        </strong>
+                    <li>
+                    <p>
                         Roshan Thakur, <strong>“5G MIMO Antennas”</strong>, 2020-2021, ECE Dept., NIT Silchar,
                         Assam,
                         India.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2019-2020</strong>
                     </div>
-                    <p><strong>10.
-                        </strong>
+                    <li>
+                    <p>
                         Krishna Mohan, <strong>“Design and Simulation of Efficient RF MEMS Components”</strong>,
                         2019-2020, ECE Dept.,
                         NIT
                         Silchar, Assam, India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>11.
-                        </strong>
+                    <li>
+                    <p>
                         Siddharth Praitm Bhagwathi, <strong>“Design and Simulation of Printed Antenna using Carbon
                             Nano-Tube”</strong>,
                         2019-2020, ECE Dept., NIT Silchar, Assam, India.</p>
                     <hr>
-                    <p><strong>12. </strong>
-
+                    </li>
+                    <li>
+                    <p>
                         Saikiran Yadla, <strong>“Soil Moisture Estimation using Antenna Technology”</strong>,
                         2019-2020,
                         ECE Dept., NIT
                         Silchar, Assam, India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>13.</strong>
-
+                    <li>
+                    <p>
                         Sanjib Rajbongshi, <strong>“Designing of Circularly Polarized Dielectric Resonator Antenna
                             for
                             RF Energy
                             Harvesting in 5G Environment”</strong>, 2019-2020, ECE Dept., NIT Silchar, Assam, India.
                     </p>
+                    </li>
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2018-2019</strong>
                     </div>
-                    <p><strong>14. </strong>
-
+                    <li>
+                    <p>
                         Bhaskar Ganguali, <strong>“Smart Antenna System implementation using
                             Microcontroller/FPGA/DSP
                             Processors/VLSI”</strong>, 2018-2019, ECE Dept., NIT Silchar, Assam, India.</p>
+                    </li>        
                     <hr>
-                    <p><strong>15. </strong>
-
+                    <li>
+                    <p>
                         Rizwan Ahmed, <strong>“SVM Modeling of EBG Structured UWB Antennas”</strong>, 2018-2019, ECE
                         Dept., NIT Silchar,
                         Assam, India.</p>
                     <hr>
-                    <p><strong>16. </strong>
-
+                    </li>
+                    <li>
+                    <p>
                         Ekansh Goyal, <strong>“ANFIS Modeling of EBG Structured-UWB Antennas”</strong>, 2018-2019,
                         ECE
                         Dept., NIT
                         Silchar,
                         Assam, India.</p>
+                    </li>
                     <hr>
-                    <p><strong>17. </strong>
-
+                    <li> 
+                    <p>
                         Shashank Kumar, <strong>“Tunable EBG-Structured UWB Antennas”</strong>, 2018-2019, ECE
                         Dept.,
                         NIT Silchar, Assam,
                         India.</p>
+                    </li>       
                     <hr>
-                    <p><strong>18. </strong>
-
+                    <li>
+                    <p>
                         Donka Ramesh, <strong>“Reconfigurable EBG-Structured UWB Antennas”</strong>, 2018-2019, ECE
                         Dept., NIT Silchar,
                         Assam, India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>19. </strong>
-
+                    <li>
+                    <p>
                         Binoy Oli, <strong>“GA/PSO based modeling of EBG Structured UWB Antennas”</strong>,
                         2018-2019,
                         ECE Dept., NIT
                         Silchar, Assam, India.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2017-2018</strong>
                     </div>
-                    <p><strong>20. </strong>
-
+                    <li>
+                    <p>
                         Pratyush Nandan, <strong>“Virtual Classroom”</strong>, 2017-2018, ECE Dept., NIT Silchar,
                         Assam,
                         India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>21. </strong>
-
+                    <li>
+                    <p>
                         Pritam Nath, <strong>“EBG Structures in Reconfigurable UWB Antennas”</strong>, 2017-2018,
                         ECE
                         Dept., NIT Silchar,
                         Assam, India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>22. </strong>
-
+                    <li>
+                    <p>
                         Anindita Roy, <strong>“Flexible EBG-Structured UWB Band-Notched Antennas”</strong>,
                         2017-2018,
                         ECE Dept., NIT
                         Silchar, Assam, India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>23. </strong>
-
+                    <li>
+                    <p>
                         Anisha Borah, <strong>“EBG-Structures in Tunable UWB Antennas”</strong>, 2017-2018, ECE
                         Dept.,
                         NIT Silchar,
                         Assam,
                         India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>24. </strong>
-
+                    <li>
+                    <p>
                         Mukul Amrohi, <strong>“Antenna Design for Small Satellites”</strong>, 2017-2018, ECE Dept.,
                         NIT
                         Silchar, Assam,
                         India.</p>
+                    </li>    
                     <hr>
-                    <p><strong>25.
-
-                        </strong> Guguloth Kotesh, <strong>“EBG-Loaded DRA for UWB Applications”</strong>,
+                    <li>
+                    <p>Guguloth Kotesh, <strong>“EBG-Loaded DRA for UWB Applications”</strong>,
                         2017-2018,
                         ECE Dept., NIT Silchar,
                         Assam,
                         India.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2016-2017</strong>
                     </div>
-                    <p><strong>26.</strong>
+                    <li>
+                    <p>
 
                         Mandovi Borthakur, <strong>“Design and Development of Dielectric Resonator Antenna for
                             Different
                             Wireless
                             Communication Systems”</strong>, 2016-2017, Dept. of ECE, NIT Silchar, Assam.</p>
+                    </li>        
                     <hr>
-                    <p><strong>27.</strong>
+                    <li>
+                    <p>
 
                         Deepak Saurabh, <strong>“Study of Dielectric resonator Antenna for millimeter Wave
                             Applications”</strong>,
                         2016-2017,
                         Dept. of ECE, NIT Silchar, Assam.</p>
+                    </li>    
                     <hr>
-                    <p><strong>28.</strong>
+                    <li>
+                    <p>
 
                         Pallab Pran Dutta, <strong>“Analysis of Printed Antenna for UHF Based
                             Applications”</strong>,
                         2016-2017, Dept. of
                         ECE, NIT Silchar, Assam.</p>
-                    <hr>
-                    <p><strong>29.</strong>
+                    </li>     -->
+                    <!-- <hr>
+                    <li>
+                    <p>
 
                         Shaban Barbhuiya, <strong>“RF Sensors for Cancer Endoscopy”</strong>, 2016-2017 Dept. of
                         ECE,
                         NIT Silchar, Assam.
                     </p>
+                </li>
                     <hr>
-                    <p><strong>30.</strong>
+                    <li>
+                    <p>
                         (Guide)
 
                         Deepak Kumar, <strong>“Design and Development of Sensors for Cancer Detection”</strong>,
                         2016-2017, Dept. of ECE,
                         NIT
                         Silchar, Assam.</p>
+                    </li>    
                     <hr>
-                    <p><strong>31.</strong>
-
+                    <li>
+                    <p>
                         Kundan Kumar, <strong>“Design of Compact Triple Band Notch Antennas for Ultra-wideband
                             Applications”</strong>,
                         2016-2017, Dept. of ECE, NIT Silchar, Assam.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2015-2016</strong>
                     </div>
-                    <p><strong>32.</strong>
-
+                    <li>
+                    <p>
                         Anshujit Sharma, Salam Thoithoi, Kodur Krishna Kumar and Kanchan Kumar,
                         <strong>“Implementation
                             of
@@ -3459,21 +3604,23 @@
                             Antennas”</strong>,
                         2015-2016, Dept. of ECE, NIT Silchar, Assam.
                     </p>
+                </li>
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2009-2010</strong>
                     </div>
-                    <p><strong>33
-                        </strong>
+                    <li>
+                    <p>
                         Vipul Sharma and Vivek Tripathi, <strong>“Remote Controlled Digital Clock”</strong>,
                         2009-2010,
                         Shobhit
                         University
                         Meerut, U.P., India.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2008-2009</strong>
                     </div>
-                    <p><strong>34.</strong>
-
+                    <li>
+                    <p>
                         Lalit Soni and Shariq Khan, <strong>“Hardware Circuit for SAP-1 Computer”</strong>,
                         2008-2009,
                         Shobhit University
@@ -3487,34 +3634,36 @@
                         U.P., India.
 
                     </p>
+                </li>
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2007-2008</strong>
                     </div>
-                    <p><strong>35.</strong>
-
+                    <li>
+                    <p>
                         Kapil Kumar and Vishal Tomar, <strong>“Microcontroller Based Home Security System”</strong>,
                         2006-07 Shobhit
                         University Meerut, U.P., India.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2005-2006</strong>
                     </div>
-                    <p><strong>36.
-
-                        </strong> Amit Kumar and Sanjay Negi, <strong>“Electronic Voting Machine”</strong> completed
+                    <li>
+                    <p>Amit Kumar and Sanjay Negi, <strong>“Electronic Voting Machine”</strong> completed
                         in Academic year 2005-06
                         at
                         Shobhit University Meerut, U.P., India.</p>
+                    </li>    
                     <hr>
                     <div class="container text-center"><strong class="text-danger">Academic Year 2004-2005</strong>
                     </div>
-                    <p><strong> 37.
-
-                        </strong> Sidhartha and Prachi Agarwal, <strong>“Tele-Remote Controlled Home Security
+                    <li>
+                    <p> Sidhartha and Prachi Agarwal, <strong>“Tele-Remote Controlled Home Security
                             System”</strong> completed in
                         Academic
                         year 2004-05 at Shobhit University Meerut, U.P., India.</p>
-                    <hr>
-
+                    </li>    
+                    <hr> -->
+                </ul>
                 </div>
             </div>
 
@@ -3537,17 +3686,17 @@
             <div class="col-md-8 offset-md-1 mb-5 " id="ieeeContent">
                 <div class="container my-3 text-center table-responsive">
                     <h4 id="hobbiesH4" class="mt-2">Professional Recognition (IEEE)/IEEE Voluntary Services</h4>
-                    <table class="table table-bordered  table-bg">
+                    <table class="table table-bordered table-bg" id="ieeeContent">
                         <thead>
                             <tr>
                                 <th colspan="3">Professional Recognition (IEEE)</th>
                             </tr>
-                            <tr>
-                                <th colspan="3" class="text-danger">Calendar Year 2023</th>
-                            </tr>
+                            
                         </thead>
-                        <tbody>
-                            <tr>
+                      
+                        <tbody id="ieeeTableBody" >
+ -->
+                        </tbody>                            <!-- <tr>
                                 <td>2023</td>
                                 <td>Founder Chair, IEEE APS Joint Chapter</td>
                                 <td>IEEE AP Society, USA</td>
@@ -3593,13 +3742,8 @@
                                 <td>Faculty Advisor, IEEE MTT-S SBC NIT Silchar </td>
                                 <td>IEEE MTT Society, USA</td>
                             </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th colspan="3" class="text-danger">Calendar Year 2022</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                       
+                       
                             <tr>
                                 <td>2022</td>
                                 <td>Regional Coordinator of IEEE AP-S Chapter Activity Committee for Asia Pacific
@@ -3634,13 +3778,7 @@
                                 <td>Chair, IEEE Silchar Subsection </td>
                                 <td>IEEE USA</td>
                             </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th colspan="3" class="text-danger">Calendar Year 2021</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                       
                             <tr>
                                 <td>2021</td>
                                 <td>Interim Chair (Founder Chair), IEEE Silchar Subsection </td>
@@ -3651,87 +3789,23 @@
                                 <td>Faculty Advisor, IEEE MTT-S SBC NIT Silchar </td>
                                 <td>IEEE MTT Society, USA</td>
                             </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th colspan="3" class="text-danger">Calendar Year 2020</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                        
                             <tr>
                                 <td>2020</td>
                                 <td>Faculty Advisor, IEEE MTT-S SBC NIT Silchar </td>
                                 <td>IEEE MTT Society, USA</td>
                             </tr>
-                        </tbody>
-                        <thead>
-                            <tr>
-                                <th colspan="3" class="text-danger">Calendar Year 2019</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                       
                             <tr>
                                 <td>2019</td>
                                 <td>Founder Faculty Advisor, IEEE MTT SBC, NIT Silchar </td>
                                 <td>IEEE MTT Society, USA</td>
                             </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Awards -->
-            <div class="col-md-8 offset-md-1 mb-5 " id="awardsContent">
 
-                <div class="container my-3 text-center table-responsive">
-                    <h4 id="hobbiesH4" class="mt-2">Award, Honours, etc. Received: </h4>
-                    <table class="table table-bordered  table-bg">
-                        <thead>
-                            <tr>
-                                <th scope="col">Year</th>
-                                <th scope="col">Name of Award/Recognition </th>
-                                <th scope="col">Awarded By </th>
-                            </tr>
-                        </thead>
-                        <tbody id="awardsTableBody">
-                            <tr>
-                                <th scope="row">2020</th>
-                                <td>IETE-Prof. SVC Aiya Memorial Award 2020 </td>
-                                <td>IETE New Delhi, India </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2009</th>
-                                <td>Certificate of Excellence (For Getting Highest Score in M. Tech.) </td>
-                                <td>Shobhit Institute of Engineering and Technology
-
-                                    (A Deemed to be University) Meerut, U.P. </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2001</th>
-                                <td>Topper (3rd Year) in Polytechnic Diploma </td>
-                                <td>Government Polytechnic Saharanpur, U.P., India </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2000</th>
-                                <td>Topper (2nd Year) in Polytechnic Diploma </td>
-                                <td>Government Polytechnic Saharanpur, U.P., India </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1999</th>
-                                <td>Topper (1st Year) in Polytechnic Diploma </td>
-                                <td>Government Polytechnic Saharanpur, U.P., India </td>
-                            </tr>
-                            <tr>
-                                <th scope="row">1988</th>
-                                <td>College Topper in Intermediate </td>
-                                <td>National Public Inter College, Jalalabad, District- Muzaffarnagar, U.P., India
-                                </td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
 
             <!-- Gallery -->
