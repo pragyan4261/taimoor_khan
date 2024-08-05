@@ -5,7 +5,7 @@ document.getElementById('registerForm')?.addEventListener('submit', async (e) =>
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
 
-    const response = await fetch('http://localhost:1335/api/register', {
+    const response = await fetch('https://taimoor-khan-zxmp.onrender.com/api/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +32,7 @@ document.getElementById('loginForm')?.addEventListener('submit', async (e) => {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
 
-    const response = await fetch('http://localhost:1335/api/login', {
+    const response = await fetch('https://taimoor-khan-zxmp.onrender.com/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
