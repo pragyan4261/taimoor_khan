@@ -31,7 +31,7 @@ app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, 'frontend/public')));
 
-Connect to MongoDB
+// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
