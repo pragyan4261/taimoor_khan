@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, 'frontend/public')));
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://testUser:test123@cluster0.7keoo01.mongodb.net/youtube?retryWrites=true&w=majority&appName=Cluster0", {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected'))
