@@ -5,7 +5,7 @@ $('#patentsContent').hide();
 $('#booksContent').hide();
 $('#bookChaptersContent').hide();
 $('#conferencesContent').hide();
-$('#teachingContent').hide();
+$('#academicContent').hide();
 $('#adminContent').hide();
 $('#collaborationContent').hide();
 $('#talksContent').hide();
@@ -218,7 +218,7 @@ $(document).ready(function(){
 			clearActiveDivs();
 
 			// Show current content
-			activateDiv('#teachingContent');
+			activateDiv('#academicContent');
 		}
 	});
 	$('#admin').click(function(e) {

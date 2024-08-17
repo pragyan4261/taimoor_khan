@@ -1,13 +1,12 @@
+// Membership model
 const mongoose = require('mongoose');
 
-const membershipSchema = new mongoose.Schema({
-    title: String,  
-    date: String,   
-    membershipId: String,  
-    organization: String,  
-    location: String,      
-}, { collection: 'professional_memberships' });
+const Membership = new mongoose.Schema({
+    year: String,
+    name: String,
+    organisation: String
+},{ collection: 'memberships' });
 
-const ProfessionalMembership = mongoose.model('ProfessionalMembership', membershipSchema);
+const MembershipModel = mongoose.model('MembershipData', Membership);
 
-module.exports = ProfessionalMembership;
+module.exports = MembershipModel;
