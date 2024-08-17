@@ -27,10 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const talksList = document.getElementById('talksList');
     const ongoingProjectsBody = document.getElementById('ongoingProjectsBody');
     const completedProjectsBody = document.getElementById('completedProjectsBody');
+    const addAcademicForm = document.getElementById('addAcademicForm')
     // if (!table) {
     //     console.error('Error: Table with id "ieeeContent" not found.');
     //     return;
     // }
+    // console.log(addAcademicForm);
 
     console.log(bTechBody)
     // console.log(adminExpForm);
@@ -1049,6 +1051,42 @@ document.addEventListener('DOMContentLoaded', () => {
                 talksForm.reset();
             })
             .catch(error => console.error('Error submitting talk:', error));
+        });
+    }
+
+    if (addAcademicForm) {
+        addAcademicForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            alert("i am here")
+            const newAcademicForm = {
+                institute: addAcademicForm.institute.value,
+                designation: addAcademicForm.designation.value,
+                from: addAcademicForm.from.value,
+                to:addAcademicForm.to.value,
+                duration:addAcademicForm.duration.value,
+            };
+           
+            // console.log(newAcademicForm.institute);
+            // window.location.href = 'index.html'
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/academics/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newAcademicForm)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Talk added:", data);
+                const row = document.createElement('tr');
+                
+                
+                row.innerHTML = `<td>${data.description}</td>`;
+                talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
+                talksForm.reset();
+            })
+            .then(window.location.href = 'index.html');
+            // .catch(error => console.error('Error submitting talk:', error));
         });
     }
 });
