@@ -5,7 +5,6 @@ const cors = require('cors');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-require('dotenv').config();
 const User = require('./models/user.model');
 const Award = require('./models/award.model');
 const Project = require('./models/project.model');
@@ -19,19 +18,33 @@ const PhdThesis = require('./models/phd.model');
 const Research = require('./models/reasearch.model');
 const Ieee = require('./models/ieee.model');
 const InvitedTalk = require('./models/invitedTalh.model');
+const Academic = require('./models/academic.model');
+const Patent = require('./models/patent.model');
+const ProfessionalMembership = require('./models/membership.model');
+const EditorialActivity = require('./models/editactivites.model');
+const BookChapter = require('./models/bookchapters.model');
 const DB_NAME = 'Cluster0';
-
+require('dotenv').config();
+ 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.static(path.join(__dirname, 'frontend/public')));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGO_URL, {
+MONGO_URL = "mongodb+srv://testUser:test123@cluster0.7keoo01.mongodb.net/youtube?retryWrites=true&w=majority&appName=Cluster0"
+
+mongoose.connect(MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useUnifiedTopology: true
 }).then(() => console.log('MongoDB connected'))
-.catch(err => console.log('MongoDB connection error:', err));;
+.catch(err => console.log('MongoDB connection error:', err));
+
+// mongoose.connect("mongodb+srv://testUser:test123@cluster0.7keoo01.mongodb.net/youtube?retryWrites=true&w=majority&appName=Cluster0", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true
+// }).then(() => console.log('MongoDB connected'))
+// .catch(err => console.log('MongoDB connection error:', err));
 
 // const awardSchema = new mongoose.Schema({
 //     year: String,
@@ -136,6 +149,9 @@ app.post('/api/administratives/add', async (req, res) => {
     }
 });
 
+
+
+
 // Read all admin experience
 app.get('/api/administratives/read', async (req, res) => {
     try {
@@ -143,6 +159,62 @@ app.get('/api/administratives/read', async (req, res) => {
         res.json(newAdminExperience);
     } catch (error) {
         res.status(500).json({ error: error.message });
+    }
+});
+
+
+app.post('/api/academics/add', async (req, res) => {
+    try {
+        const newAcad = new Academic(req.body);
+        await newAcad.save();
+        res.status(201).json(newAcad);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+app.post('/api/research_collaborators/add', async (req, res) => {
+    try {
+        const newResearch = new ResearchCollaborator(req.body);
+        await newResearch.save();
+        res.status(201).json(newResearch);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+app.post('/api/patents/add', async (req, res) => {
+    try {
+        const newPatent = new Patent(req.body);
+        await newPatent.save();
+        res.status(201).json(newPatent);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+app.post('/api/professional_memberships/add', async (req, res) => {
+    try {
+        const newMembership = new ProfessionalMembership(req.body);
+        await newMembership.save();
+        res.status(201).json(newMembership);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+app.post('/api/editorial_activities/add', async (req, res) => {
+    try {
+        const newActivity = new EditorialActivity(req.body);
+        await newActivity.save();
+        res.status(201).json(newActivity);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+app.post('/api/bookChapters/add', async (req, res) => {
+    try {
+        const newBookChap = new BookChapter(req.body);
+        await newBookChap.save();
+        res.status(201).json(newBookChap);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
     }
 });
 
