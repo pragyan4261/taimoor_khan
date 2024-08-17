@@ -27,12 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const talksList = document.getElementById('talksList');
     const ongoingProjectsBody = document.getElementById('ongoingProjectsBody');
     const completedProjectsBody = document.getElementById('completedProjectsBody');
+    const addMembershipForm = document.getElementById('addMembershipForm');
+    const membershipsTableBody = document.getElementById('membershipsTableBody');
     // if (!table) {
     //     console.error('Error: Table with id "ieeeContent" not found.');
     //     return;
     // }
 
-    console.log(bTechBody)
+    // console.log(bTechBody)
     // console.log(adminExpForm);
     
     //     console.log(2+3)
@@ -116,8 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${project.funding_Agency}</td>
                     <td>${project.funds}</td>
                 `;
-                console.log(project.status);
-                console.log(ongoingProjectsBody)
+                // console.log(project.status);
+                // console.log(ongoingProjectsBody)
                 if (project.status.toLowerCase() === 'ongoing') {
                     ongoingProjectsBody.insertBefore(row, ongoingProjectsBody.firstChild);
                 } else {
@@ -207,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <td>${adminExp.to}</td>
                     <td>${adminExp.duration}</td>
                 `;
-                console.log(row);
+                // console.log(row);
                 adminExpBody.insertBefore(row, adminExpBody.firstChild);
             });
         })
@@ -271,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(data => {
                     // Organize data by year
                     data.sort((a, b) => b.year - a.year);
-                    console.log(data);
+                    // console.log(data);
                     const journalsByYear = {};
                     data.forEach(journal => {
                         
@@ -1005,7 +1007,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         if(talksList){
-            console.log('talks',talksList)
+            // console.log('talks',talksList)
             fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/read')
             .then(response => response.json())
             .then(data => {
@@ -1049,6 +1051,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 talksForm.reset();
             })
             .catch(error => console.error('Error submitting talk:', error));
+        });
+    }
+
+    if(membershipsTableBody){
+        fetch('http://localhost:1335/api/memberships/read')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('membership Data fetched:', data);
+            data.sort((a, b) => a.year - b.year);
+            data.forEach((membership,index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                   
+                    <td>${membership.year}</td>
+                    <td>${membership.name}</td>
+                    <td>${membership.organisation}</td>
+                
+                `;
+                membershipsTableBody.insertBefore(row, membershipsTableBody.firstChild);
+                
+            });
+        })
+        .catch(error => console.error('Error fetching projects:', error));
+    }
+    if (addMembershipForm) {
+        addMembershipForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            
+            
+            const newMembership = {
+                year: addMembershipForm.year.value,
+                name: addMembershipForm.name.value,
+                organisation: addMembershipForm.organisation.value
+            };
+            alert(newMembership.organisation);
+
+            
+            // Fetch data and add membership
+            fetch('http://localhost:1335/api/memberships/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newMembership)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok ${response.status} ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // console.log('Success:', data);
+                // console.log('Membership added:', data);
+                data.sort((a, b) => b.year - a.year);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <th scope="row">${data.year}</th>
+                    <td>${data.name}</td>
+                    <td>${data.organisation}</td>
+                `;
+                const membershipsTableBody = document.getElementById('membershipsTableBody');
+                membershipsTableBody.insertBefore(row, membershipsTableBody.firstChild);
+    
+                // addMembershipForm.reset();
+                window.location.href = 'index.html';
+                addMembershipForm.reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     }
 });
