@@ -107,6 +107,8 @@ app.post('/api/awards/add', async (req, res) => {
     }
 });
 
+
+
 // Read all awards endpoint
 app.get('/api/awards/read', async (req, res) => {
     try {
@@ -116,6 +118,28 @@ app.get('/api/awards/read', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+
+// Add new membership endpoint
+app.post('/api/memberships/add', async (req, res) => {
+    try {
+        const newMembership = new MembershipModel(req.body);
+        await newMembership.save();
+        res.status(201).json(newMembership);
+    } catch (error) {
+        res.status(400).json({ error: error.message });
+    }
+});
+
+// Read all memberships endpoint
+app.get('/api/memberships/read', async (req, res) => {
+    try {
+        const memberships = await MembershipModel.find();
+        res.json(memberships);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 
 // Add new project
 app.post('/api/projects/add', async (req, res) => {
@@ -201,15 +225,8 @@ app.post('/api/patents/add', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
-app.post('/api/professional_memberships/add', async (req, res) => {
-    try {
-        const newMembership = new ProfessionalMembership(req.body);
-        await newMembership.save();
-        res.status(201).json(newMembership);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-});
+
+
 app.post('/api/editorial_activities/add', async (req, res) => {
     try {
         const newActivity = new EditorialActivity(req.body);

@@ -3,25 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="project.css">
-    <script src="index.js"></script>
-    <title>Professional Membership</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+    <script src="index.js" defer></script>
+    <title>Memberships</title>
 </head>
 <body>
-    <div class="container">
-        <h4>Add new Membership</h4>
-        <form id="addMembership">
+    <div class="container my-3 text-center">
+        <h4 class="mt-2">Add New Membership</h4>
+        <br>
+        <form id="addMembershipForm">
             <div class="form-group">
-                <label for="conferenceContent">Enter the details of the Membership</label>
-                <input type="text" class="form-control" id="conferenceContent" required>
+                <label for="year">Year</label>
+                <input type="text" class="form-control" id="year" required>
             </div>
+            <br>
             <div class="form-group">
-                <label for="subdescription">Enter Sub Description</label>
-                <input type="text" class="form-control" id="subdescription" >
+                <label for="name">Name of Membership</label>
+                <input type="text" class="form-control" id="name" required>
             </div>
+            <br>
+            <div class="form-group">
+                <label for="organisation">Place of Organization</label>
+                <input type="text" class="form-control" id="organisation" required>
+            </div>
+            <br>
             <button type="submit" class="btn btn-primary">Add Membership</button>
         </form>
-        
     </div>
 </body>
 </html>

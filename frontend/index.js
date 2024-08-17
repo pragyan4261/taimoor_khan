@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('addAwardForm');
     const awardsTableBody = document.getElementById('awardsTableBody');
+    const addMembershipForm = document.getElementById('addMembershipForm');
+    const membershipsTableBody = document.getElementById('membershipsTableBody');
     const projectTableBody = document.getElementById('projectTableBody');
     const projectForm = document.getElementById('addProjectForm');
     const adminExpBody = document.getElementById('adminExpBody');
@@ -33,9 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //     console.error('Error: Table with id "ieeeContent" not found.');
     //     return;
     // }
-    // console.log(addAcademicForm);
+    // console.log(booksForm);
 
-    console.log(bTechBody)
+    // console.log(addMembershipForm);
+
+    // console.log(bTechBody)
     // console.log(adminExpForm);
     
     //     console.log(2+3)
@@ -96,6 +100,64 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error:', error));
         });
     }
+
+    // Professional Membership
+    
+    if (addMembershipForm) {
+        addMembershipForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            
+            
+            const newMembership = {
+                year: addMembershipForm.year.value,
+                name: addMembershipForm.name.value,
+                organisation: addMembershipForm.organisation.value
+            };
+            alert(newMembership);
+    
+            // Fetch data and add membership
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/memberships/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newMembership)
+            })
+            .then(response => {
+                // Log response to check if it's JSON
+                console.log(response);
+    
+                // Check if the response is OK (status 200-299)
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                // Parse the response only if it's JSON
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <th scope="row">${data.year}</th>
+                    <td>${data.name}</td>
+                    <td>${data.organisation}</td>
+                `;
+                const membershipsTableBody = document.getElementById('membershipsTableBody');
+                membershipsTableBody.insertBefore(row, membershipsTableBody.firstChild);
+    
+                addMembershipForm.reset();
+                window.location.href = 'index.html';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    }
+    
+    
+
+   
 
     
     //handel project submission
