@@ -172,6 +172,17 @@ app.post('/api/academics/add', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+
+app.get('/api/academics/read', async (req, res) => {
+    try {
+        const newAcad = await Academic.find();
+        res.json(newAcad);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.post('/api/research_collaborators/add', async (req, res) => {
     try {
         const newResearch = new ResearchCollaborator(req.body);

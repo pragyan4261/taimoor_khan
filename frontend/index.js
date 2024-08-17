@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const talksList = document.getElementById('talksList');
     const ongoingProjectsBody = document.getElementById('ongoingProjectsBody');
     const completedProjectsBody = document.getElementById('completedProjectsBody');
-    const addAcademicForm = document.getElementById('addAcademicForm')
+    const addAcademicForm = document.getElementById('addAcademicForm');
+    const acadExpBody = document.getElementById('acadExpBody');
     // if (!table) {
     //     console.error('Error: Table with id "ieeeContent" not found.');
     //     return;
@@ -714,39 +715,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(error => console.error('Error:', error));
             });
         }
-        // if(mTechTableBody){
-        //     const mTechList = mTechTableBody.querySelector('ul');
-        //     fetch('https://taimoor-khan-zxmp.onrender.com/api/mtechthesis/read')
-        //     .then(response => {
-        //         if (!response.ok) {
-        //             throw new Error('Network response was not ok');
-        //         }
-        //         // console.log("response",response);
-        //         return response.json();
-        //     })
-        //     .then(data => {
-                
-        //         // console.log('book Data fetched:', data);
-        //         data.forEach(thesis => {
-        //             const newMtechThesis = document.createElement('li');
-        //             console.log(thesis.mtechThesisContent)
-        //             console.log(thesis.academicYear)
-        //             // newBook.classList.add('academic-block','mb-4')
-
-        //             newMtechThesis.innerHTML =`
-        //             <hr>
-        //                 <p><strong>“${thesis.mtechThesisContent}”,</strong>,
-        //                         ${thesis.academicYear},
-        //                         ${thesis.depertment}, ${thesis.institute} </p>
-        //                     <p class="text-danger">(${thesis.role})</p>
-        //                 </hr>    
-        //             `;
-        //             mTechList.insertBefore(newMtechThesis,mTechList.firstChild);
-        //         });
-                
-        //     })
-        //     .catch(error => console.error('Error fetching projects:', error));
-        // } 
+        
         if(phdthesisBody){
             fetch('https://taimoor-khan-zxmp.onrender.com/api/phdthesis/read')
             .then(response => {
@@ -1054,10 +1023,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (addAcademicForm) {
+
+    if(addAcademicForm){
         addAcademicForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            alert("i am here")
+            
             const newAcademicForm = {
                 institute: addAcademicForm.institute.value,
                 designation: addAcademicForm.designation.value,
@@ -1065,9 +1035,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 to:addAcademicForm.to.value,
                 duration:addAcademicForm.duration.value,
             };
-           
-            // console.log(newAcademicForm.institute);
-            // window.location.href = 'index.html'
+            console.log("newAcademicForm",newAcademicForm);
+            window.location.href = 'index.html';
+    
             fetch('https://taimoor-khan-zxmp.onrender.com/api/academics/add', {
                 method: 'POST',
                 headers: {
@@ -1075,19 +1045,67 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify(newAcademicForm)
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Talk added:", data);
-                const row = document.createElement('tr');
-                
-                
-                row.innerHTML = `<td>${data.description}</td>`;
-                talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
-                talksForm.reset();
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
             })
-            .then(window.location.href = 'index.html');
-            // .catch(error => console.error('Error submitting talk:', error));
-        });
+            .then(data => {
+                // console.log('newAdminExp added:', data);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    
+                    <td >${data.institute}</td>
+                    <td>${data.designation}</td>
+                    <td>${data.from}</td>
+                    <td>${data.to}</td>
+                    <td>${data.duration}</td>
+    
+                `;
+                console.log("row",row)
+                acadExpBody.insertBefore(row, acadExpBody.firstChild);
+               
+                addAcademicForm.reset();
+                
+                
+            })
+            .catch(error => console.error('Error:', error));
+            });
+    }
+
+
+    if (acadExpBody) {
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/academics/read')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Ensure data is an array
+                if (Array.isArray(data)) {
+                    // Clear existing content if any
+                    acadExpBody.innerHTML = '';
+
+                    // Loop through each academic experience and create a table row
+                    data.forEach(acadExp => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${acadExp.institute || 'N/A'}</td>
+                            <td>${acadExp.designation || 'N/A'}</td>
+                            <td>${acadExp.from || 'N/A'}</td>
+                            <td>${acadExp.to || 'N/A'}</td>
+                            <td>${acadExp.duration || 'N/A'}</td>
+                        `;
+                        acadExpBody.appendChild(row);
+                    });
+                } else {
+                    console.error('Expected data to be an array but got:', data);
+                }
+            })
+            .catch(error => console.error('Error fetching academic experiences:', error));
     }
 });
             
