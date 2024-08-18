@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const addEditorialsForm = document.getElementById('addEditorials');
     const patent  = document.getElementById('patentContent');
     const addPatent = document.getElementById('addPatent');
+    const addBookChapForm = document.getElementById('addBookChapForm');
+    const bookChBody = document.getElementById('bookChContent')
     // if (!table) {
     //     console.error('Error: Table with id "ieeeContent" not found.');
     //     return;
@@ -1015,9 +1017,12 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/read')
             .then(response => response.json())
             .then(data => {
+                console.log("data",data);
                 data.forEach(talk => {
                     const row = document.createElement('tr');
-                    row.innerHTML = `<td>${talk.description}</td>`;
+                    row.innerHTML = `
+                    <td>${talk.year}</td>
+                    <td>${talk.description}</td>`;
                     talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
                     row.style.backgroundColor = 'white';
                     row.style.color = 'black';
@@ -1033,11 +1038,12 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
 
             const newTalk = {
-                year: parseInt(talksForm.year.value, 10),
+                year: talksForm.year.value,
                 description: talksForm.description.value
             };
-            window.location.href = 'index.html'
-            fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/add', {
+            console.log(newTalk);
+            // window.location.href = 'index.html'
+            fetch('http://localhost:1335/api/invitedtalk/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1050,7 +1056,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const row = document.createElement('tr');
                 
                 
-                row.innerHTML = `<td>${data.description}</td>
+                row.innerHTML = `
+                <td>${data.year}</td>
+                <td>${data.description}</td>
                 <br/>`;
                 talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
                 talksForm.reset();
@@ -1135,9 +1143,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     if (editorialbody) {
+        // alert("edit")
         fetch('http://localhost:1335/api/editorials/read')
             .then(response => response.json())
             .then(data => {
+                
                 // Organize data by year
                 data.sort((a, b) => b.year - a.year);
     
@@ -1173,7 +1183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     editorialbody.insertAdjacentHTML('afterbegin', yearHeader.outerHTML + editorialEntries);
                 }
             })
-            .catch(error => console.error('Error fetching journals:', error));
+            .catch(error => console.error('Error fetching editorial:', error));
     }
     
     if (addEditorialsForm) {
@@ -1229,21 +1239,33 @@ document.addEventListener('DOMContentLoaded', () => {
             .catch(error => console.error('Error:', error));
         });
     }
-
+    // console.log("Patent element found",patent);
     if(patent){
-        // console.log('talks',talksList)
+       
         fetch('http://localhost:1335/api/patents/read')
-        .then(response => response.json())
+        .then(response => {
+            console.log("Response received:", response);
+            return response.json()
+        })
         .then(data => {
+            console.log(data);
             data.forEach(talk => {
-                const row = document.createElement('tr');
-                row.innerHTML = `<td>${talk.description}</td>`;
-                talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
-                row.style.backgroundColor = 'white';
+                const row = document.createElement('div');
+                row.innerHTML = `<div>
+                <div>${talk.description}</div>
+                ${talk.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${talk.doiLink}" target="_blank">${talk.doiLink}</a>
+                    </div>` : ''}
+            </div>`;
+                patent.insertBefore(row, patent.firstChild); // Add the new talk at the top
+                console.log("patent",row);
+                // row.style.backgroundColor = 'white';
                 row.style.color = 'black';
             });
         })
-        .catch(error => console.error('Error fetching talks:', error));
+        .catch(error => console.error('Error fetching patent:', error));
     }
 
 
@@ -1257,28 +1279,118 @@ if (addPatent) {
             description: addPatent.description.value,
             doiLink: addPatent.doiLink.value
         };
+        console.log("data",newPatent);
         window.location.href = 'index.html'
         fetch('http://localhost:1335/api/patents/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(newTalk)
+            body: JSON.stringify(newPatent)
         })
         .then(response => response.json())
         .then(data => {
             console.log("Talk added:", data);
-            const row = document.createElement('tr');
+            const row = document.createElement('li');
+            row.innerHTML = `
+            <div>
+                <p>${data.description}</p>
+                ${data.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${data.doiLink}" target="_blank">${data.doiLink}</a>
+                    </div>` : ''}
+            </div>
+            `
             
-            
-            row.innerHTML = `<td>${data.description}</td>
-            <br/>`;
-            talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
-            talksForm.reset();
+            row.innerHTML = `<td>${data.description}</td>`;
+            patent.insertBefore(row, patent.firstChild); // Add the new talk at the top
+            addPatent.reset();
         })
         .catch(error => console.error('Error submitting talk:', error));
     });
 }
+if(bookChBody){
+    const booksList = bookChBody.querySelector('ul');
+    fetch('http://localhost:1335/api/bookChapters/read')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // console.log("response",response);
+        return response.json();
+    })
+    .then(data => {
+        
+        console.log('bookch Data fetched:', data);
+        data.forEach(book => {
+            const newBook = document.createElement('li');
+            // newBook.classList.add('academic-block','mb-4')
+
+            newBook.innerHTML =`
+                <div>
+                    <strong>taimoor Khan</strong> ${book.author}, <strong>“${book.description}” ${book.name}</strong>, ${book.place} ${book.isbn ? `ISBN:${book.isbn} ${book.date}`:''} ${book.subdescription ? `<p class="text-danger">(${book.subdescription})</p>` : ''}
+                    ${book.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${book.doiLink}" target="_blank">${book.doiLink}</a>
+                    </div>` : ''}
+                </div>
+            `;
+            booksList.insertBefore(newBook,booksList.firstChild);
+        });
+        
+    })
+    .catch(error => console.error('Error fetching projects:', error));
+}
+if(addBookChapForm){
+    addBookChapForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const newBook = {
+            author:addBookChapForm.author.value,
+            description: addBookChapForm.description.value,
+            subdescription: addBookChapForm.subdescription.value,
+            doiLink: addBookChapForm.doiLink.value,
+            name:addBookChapForm.name.value,
+            place:addBookChapForm.place.value,
+            date:addBookChapForm.date.value,
+            isbn:addBookChapForm.isbn.value,
+        };
+        // console.log('newbook',newBook);
+        window.location.href = 'index.html';
+        fetch('http://localhost:1335/api/bookChapters/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newBook)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // console.log("Bookchepter added:", data);
+            const newBookElement = document.createElement('li');
+            newBookElement.innerHTML = `
+                <div>
+                    <strong>${data.author}</strong>, <strong>“${data.description}” ${data.name}</strong>  ${data.isbn ? `ISBN:${data.isbn} ${data.date}`:''}, ${data.place} <p class="text-danger">(${data.subDescription})</p>
+                    ${data.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${data.doiLink}" target="_blank">${data.doiLink}</a>
+                    </div>` : ''}
+                </div>
+            `;
+            bookChBody.insertBefore(newBookElement, bookChBody.firstChild);
+            addBookChapForm.reset();
+        })
+        .catch(error => console.error('Error submitting book:', error));
+    });
+} 
 
 
     

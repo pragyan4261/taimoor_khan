@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const patentSchema = new mongoose.Schema({
     // role: String,        
-    patent: String, 
+    description: String, 
     doiLink: String        
 }, { collection: 'patents' });
 
