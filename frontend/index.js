@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const completedProjectsBody = document.getElementById('completedProjectsBody');
     const addMembershipForm = document.getElementById('addMembershipForm');
     const membershipsTableBody = document.getElementById('membershipsTableBody');
+    const editorialbody = document.getElementById('editorialContainer');
+    const addEditorialsForm = document.getElementById('addEditorials');
+    const patent  = document.getElementById('patentContent');
+    const addPatent = document.getElementById('addPatent');
     // if (!table) {
     //     console.error('Error: Table with id "ieeeContent" not found.');
     //     return;
@@ -999,7 +1003,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${data.description}</td>
                         <td>${data.branch}</td>
                     `;
-                    awardsTableBody.insertBefore(row, awardsTableBody.firstChild);
+                    ieeeContent.insertBefore(row, ieeeContent.firstChild);
                     window.location.href = 'index.html';
                     // form.reset();
                 })
@@ -1046,7 +1050,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const row = document.createElement('tr');
                 
                 
-                row.innerHTML = `<td>${data.description}</td>`;
+                row.innerHTML = `<td>${data.description}</td>
+                <br/>`;
                 talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
                 talksForm.reset();
             })
@@ -1090,8 +1095,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: addMembershipForm.name.value,
                 organisation: addMembershipForm.organisation.value
             };
-            alert(newMembership.organisation);
-
+            // alert(newMembership.organisation);
+            window.location.href = 'index.html';
             
             // Fetch data and add membership
             fetch('http://localhost:1335/api/memberships/add', {
@@ -1121,7 +1126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 membershipsTableBody.insertBefore(row, membershipsTableBody.firstChild);
     
                 // addMembershipForm.reset();
-                window.location.href = 'index.html';
+                // window.location.href = 'index.html';
                 addMembershipForm.reset();
             })
             .catch(error => {
@@ -1129,6 +1134,155 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    if (editorialbody) {
+        fetch('http://localhost:1335/api/editorials/read')
+            .then(response => response.json())
+            .then(data => {
+                // Organize data by year
+                data.sort((a, b) => b.year - a.year);
+    
+                const editorialsByYear = {};
+                data.forEach(journal => {
+                    if (!editorialsByYear[journal.year]) {
+                        editorialsByYear[journal.year] = [];
+                    }
+                    editorialsByYear[journal.year].push(journal);
+                });
+    
+                // Generate HTML for each year
+                for (const [year, editorials] of Object.entries(editorialsByYear)) {
+                    const yearHeader = document.createElement('div');
+                    yearHeader.classList.add('h4');
+                    yearHeader.textContent = year;
+    
+                    const editorialEntries = editorials.map((journal, index) => {
+                        return `
+                            <div class="academic-block mb-4">
+                                <div>
+                                    <strong>${index + 1}.</strong> ${journal.description}
+                                </div>
+                                <div class="mb-4">
+                                    <strong>DOI: </strong>
+                                    <a class="read fw-bold" href="${journal.doiLink}" target="_blank">${journal.doiLink}</a>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    editorialbody.style.borderLeft = '0';
+                    editorialbody.style.paddingLeft = '0px';
+                    editorialbody.insertAdjacentHTML('afterbegin', yearHeader.outerHTML + editorialEntries);
+                }
+            })
+            .catch(error => console.error('Error fetching journals:', error));
+    }
+    
+    if (addEditorialsForm) {
+        addEditorialsForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const newJournal = {
+                year: addEditorialsForm.year.value,
+                description: addEditorialsForm.description.value,
+                doiLink: addEditorialsForm.doiLink.value,
+            };
+            alert(newJournal.year);
+            window.location.href = 'index.html';
+            fetch('http://localhost:1335/api/editorials/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newJournal)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // console.log("Journal added:", data.doi);
+                data.sort((a, b) => b.year - a.year);
+                const journalBlock = document.createElement('div');
+                journalBlock.classList.add('academic-block', 'mb-4');
+                journalBlock.innerHTML = `
+                    <div class="h4">${data.year}</div>
+                        <div>
+                            <strong>${data.description}</strong>
+                        </div>
+                        <div class="mb-4">
+                            <strong>DOI: </strong>
+                            <a class="read fw-bold" href="${data.doi}" target="_blank">${data.doi}</a>
+                        </div>
+                    `;
+                    editorialbody.style.borderLeft = '0';
+                    editorialbody.style.paddingLeft = '0px';
+                    editorialbody.appendChild(journalBlock);
+                    addEditorialsForm.reset();
+                
+                let yearHeader = Array.from(editorialbody.querySelectorAll('.h4'))
+            .find(header => header.textContent === data.year.toString());
+        
+            if (!yearHeader) {
+                yearHeader = document.createElement('div');
+                yearHeader.classList.add('h4');
+                yearHeader.textContent = data.year;
+                editorialbody.insertBefore(yearHeader, editorialbody.firstChild);
+            }
+                    
+                })
+            .catch(error => console.error('Error:', error));
+        });
+    }
+
+    if(patent){
+        // console.log('talks',talksList)
+        fetch('http://localhost:1335/api/patents/read')
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(talk => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${talk.description}</td>`;
+                talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
+                row.style.backgroundColor = 'white';
+                row.style.color = 'black';
+            });
+        })
+        .catch(error => console.error('Error fetching talks:', error));
+    }
+
+
+// Handle form submission
+if (addPatent) {
+    addPatent.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const newPatent = {
+            // year: parseInt(talksForm.year.value, 10),
+            description: addPatent.description.value,
+            doiLink: addPatent.doiLink.value
+        };
+        window.location.href = 'index.html'
+        fetch('http://localhost:1335/api/patents/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newTalk)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Talk added:", data);
+            const row = document.createElement('tr');
+            
+            
+            row.innerHTML = `<td>${data.description}</td>
+            <br/>`;
+            talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
+            talksForm.reset();
+        })
+        .catch(error => console.error('Error submitting talk:', error));
+    });
+}
+
+
+    
+    
 });
             
         
