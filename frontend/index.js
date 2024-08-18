@@ -1043,7 +1043,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             console.log(newTalk);
             // window.location.href = 'index.html'
-            fetch('http://localhost:1335/api/invitedtalk/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1068,7 +1068,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if(membershipsTableBody){
-        fetch('http://localhost:1335/api/memberships/read')
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/memberships/read')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -1107,7 +1107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'index.html';
             
             // Fetch data and add membership
-            fetch('http://localhost:1335/api/memberships/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/memberships/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1144,7 +1144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (editorialbody) {
         // alert("edit")
-        fetch('http://localhost:1335/api/editorials/read')
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/editorials/read')
             .then(response => response.json())
             .then(data => {
                 
@@ -1197,7 +1197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             alert(newJournal.year);
             window.location.href = 'index.html';
-            fetch('http://localhost:1335/api/editorials/add', {
+            fetch('https://taimoor-khan-zxmp.onrender.com/api/editorials/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1242,7 +1242,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log("Patent element found",patent);
     if(patent){
        
-        fetch('http://localhost:1335/api/patents/read')
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/patents/read')
         .then(response => {
             console.log("Response received:", response);
             return response.json()
@@ -1281,7 +1281,7 @@ if (addPatent) {
         };
         console.log("data",newPatent);
         window.location.href = 'index.html'
-        fetch('http://localhost:1335/api/patents/add', {
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/patents/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -1312,7 +1312,7 @@ if (addPatent) {
 }
 if(bookChBody){
     const booksList = bookChBody.querySelector('ul');
-    fetch('http://localhost:1335/api/bookChapters/read')
+    fetch('https://taimoor-khan-zxmp.onrender.com/api/bookChapters/read')
     .then(response => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -1359,7 +1359,7 @@ if(addBookChapForm){
         };
         // console.log('newbook',newBook);
         window.location.href = 'index.html';
-        fetch('http://localhost:1335/api/bookChapters/add', {
+        fetch('https://taimoor-khan-zxmp.onrender.com/api/bookChapters/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
