@@ -237,31 +237,31 @@
                 <div class="mx-1  row">
                     <div class="grid row gap-3" id="Profiles">
                         <a href="https://scholar.google.com/citations?hl=en&tzom=-330&user=4lECOjUAAAAJ"
-                            class="btn col-2  btn-outline-light mb-2 profile-link "
+                            class="btn btn-outline-primary mb-2 profile-link col-12 col-sm-6 col-md-4 col-lg-3"
                             target="_blank">
                             <i class="fab fa-google" data-toggle="tooltip" data-placement="bottom"
                                 data-tooltip-text="Google Scholar"></i>
                         </a>
                         <a href="https://www.researchgate.net/profile/Taimoor-Khan"
-                            class="btn  btn-outline-light mb-2 profile-link col-2 "
+                            class="btn btn-outline-primary mb-2 profile-link col-12 col-sm-6 col-md-4 col-lg-3"
                             target="_blank">
                             <i class="fab fa-researchgate" data-toggle="tooltip" data-placement="bottom"
                                 data-tooltip-text="Research Gate"></i>
                         </a>
                         <a href="https://orcid.org/0000-0002-3960-1423"
-                            class="btn  btn-outline-light mb-2 profile-link col-2 "
+                            class="btn btn-outline-primary mb-2 profile-link col-12 col-sm-6 col-md-4 col-lg-3"
                             target="_blank">
                             <i class="fab fa-orcid" data-toggle="tooltip" data-placement="bottom"
                                 data-tooltip-text="ORCID"></i>
                         </a>
                         <a href="https://www.webofscience.com/wos/author/record/B-3575-2016"
-                            class="btn  btn-outline-light mb-2 profile-link col-2 "
+                            class="btn btn-outline-primary mb-2 profile-link col-12 col-sm-6 col-md-4 col-lg-3"
                             target="_blank">
                             <i class="fas fa-user-graduate" data-toggle="tooltip" data-placement="bottom"
                                 data-tooltip-text="WoS"></i>
                         </a>
                         <a href="https://www.scopus.com/authid/detail.uri?authorId=55189263800"
-                            class="btn  btn-outline-light mb-2 profile-link col-2 "
+                            class="btn btn-outline-primary mb-2 profile-link col-12 col-sm-6 col-md-4 col-lg-3"
                             target="_blank">
                             <i class="fas fa-user-tie " data-toggle="tooltip" data-placement="bottom"
                                 data-tooltip-text="Scopus"></i>
@@ -1499,7 +1499,9 @@
                     <div class="row mt-1">
                         <h2 class="pub-year-h2">PATENTS</h2>
                         <div class="academic-block mb-4">
-
+                            <div id="patentContent">
+                                
+                            </div>
 
                         </div>
 
@@ -1580,6 +1582,11 @@
                     <div class="row mt-1">
                         <h2 class="pub-year-h2">BOOK CHAPTERS</h2>
                         <div class="academic-block mb-4">
+                            <div id="bookChContent">
+                                <ul>
+
+                                </ul>
+                            </div>
 
 
                         </div>
@@ -3061,7 +3068,7 @@
                     </table>
                 </div>
             </div>
-
+<!-- Hello -->
             <!-- Supervision -->
             <!-- phd -->
             <div class="col-md-8 offset-md-1 mb-5 " id="phdContent">
@@ -3673,7 +3680,7 @@
                     </ul>
                 </div>
             </div>
-<!-- Hello -->
+
 
 
             <!-- Professional Membership -->
@@ -3696,11 +3703,24 @@
             </div>
 
             <!-- Editorial Activities -->
-            <div class="col-md-8 offset-md-1 mb-5 " id="editorialContent">
-                <div class="container my-3 text-center table-responsive">
-                    <h4 id="hobbiesH4" class="mt-2">Editorial Activities</h4>
+            <div class="col-md-8 offset-md-1 mb-5" id="editorialContent">
+                <div class="container">
+                    <div class="row mt-1">
+                        <h2 class="pub-year-h2">Editorial Activities</h2>
+                        <div id="editorialContainer">
+
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- <div class="col-md-8 offset-md-1 mb-5 " id="editorialContent">
+                <div class="container my-3 text-center table-responsive">
+                    <h4 id="hobbiesH4" class="mt-2">Editorial Activities</h4>
+                    <div id="editorialContainer">
+
+                    </div>
+                </div>
+            </div> -->
 
             <div class="col-md-8 offset-md-1 mb-5 " id="galleryContents">
                 <div class="container my-3 text-center table-responsive">
@@ -3786,17 +3806,16 @@
             <div class="col-md-8 offset-md-1 mb-5 " id="ieeeContent">
                 <div class="container my-3 text-center table-responsive">
                     <h4 id="hobbiesH4" class="mt-2">Professional Recognition (IEEE)/IEEE Voluntary Services</h4>
-                    <table class="table table-bordered table-bg" id="ieeeContent">
+                    <table class="table table-bordered table-bg">
                         <thead>
                             <tr>
                                 <th colspan="3">Professional Recognition (IEEE)</th>
                             </tr>
-
                         </thead>
 
                         <tbody id="ieeeTableBody">
-                            -->
-                        </tbody> <!-- <tr>
+                        </tbody> 
+                        <!-- <tr>
                                 <td>2023</td>
                                 <td>Founder Chair, IEEE APS Joint Chapter</td>
                                 <td>IEEE AP Society, USA</td>
@@ -3900,15 +3919,49 @@
                                 <td>2019</td>
                                 <td>Founder Faculty Advisor, IEEE MTT SBC, NIT Silchar </td>
                                 <td>IEEE MTT Society, USA</td>
-                            </tr>
+                            </tr>-->
                     </table>
                 </div>
             </div>
-
-
-
+                      
 
             <!-- Gallery -->
+<<<<<<< HEAD
+            <div class="col-md-8 offset-md-1 mb-5 " id="galleryContents">
+                <div class="container my-3 text-center table-responsive">
+                    <h4  class="mt-2">Gallery</h4>
+                    <div class="gallery row" id="gallery">
+                        <div class="gallery-item py-2  col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/1.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2  col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/2.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/3.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/4.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/5.jpg" alt=""></div>
+                        </div>
+
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/6.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/7.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/8.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/9.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/10.jpg" alt=""></div>
+=======
                         
 
 
@@ -3926,27 +3979,74 @@
                                         data-en="Previous experience"></span></h4>
 
                             </div>
+>>>>>>> 9d94cf6d605824dc1201dfaa6f339fd6d04230e0
                         </div>
 
-
-
-
-
-
-
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/12.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/13.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/14.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/15.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/16.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/17.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/18.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/19.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/20.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/21.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/22.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/23.jpg" alt=""></div>
+                        </div>
+                        <div class="gallery-item py-2 col-md-6">
+                            <div class="content"><img src="./assets/gallery_img/11.jpg" alt=""></div>
+                        </div>
+                    </div>
                 </div>
-
-
             </div>
 
+              <!-- Clases particulares -->
+              <div class="col-md-12 mb-5" id="particularContent">
+                <div class="container language">
+                    <h1 class="particular-h1 mb-3" data-en="Quality always goes first."></h1>
 
+                    <h4 class="particular-clickable">🧑 <span class="particular-h4"><span
+                                data-en="Who's "></span><span class="particular-name">Dr. Taimoor
+                                Khan</span>?</span></h4>
+
+
+                    <h4 class="particular-clickable">💼 <span class="particular-h4"
+                            data-en="Previous experience"></span></h4>
+
+                </div>
+            </div>
 
 
         </div>
 
 
     </div>
-    </div>
+  
 
 
     <!-- Scripts -->

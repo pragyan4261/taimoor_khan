@@ -29,6 +29,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const completedProjectsBody = document.getElementById('completedProjectsBody');
     const addMembershipForm = document.getElementById('addMembershipForm');
     const membershipsTableBody = document.getElementById('membershipsTableBody');
+    const editorialbody = document.getElementById('editorialContainer');
+    const addEditorialsForm = document.getElementById('addEditorials');
+    const patent  = document.getElementById('patentContent');
+    const addPatent = document.getElementById('addPatent');
+    const addBookChapForm = document.getElementById('addBookChapForm');
+    const bookChBody = document.getElementById('bookChContent')
     // if (!table) {
     //     console.error('Error: Table with id "ieeeContent" not found.');
     //     return;
@@ -999,7 +1005,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <td>${data.description}</td>
                         <td>${data.branch}</td>
                     `;
-                    awardsTableBody.insertBefore(row, awardsTableBody.firstChild);
+                    ieeeContent.insertBefore(row, ieeeContent.firstChild);
                     window.location.href = 'index.html';
                     // form.reset();
                 })
@@ -1011,9 +1017,12 @@ document.addEventListener('DOMContentLoaded', () => {
             fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/read')
             .then(response => response.json())
             .then(data => {
+                console.log("data",data);
                 data.forEach(talk => {
                     const row = document.createElement('tr');
-                    row.innerHTML = `<td>${talk.description}</td>`;
+                    row.innerHTML = `
+                    
+                    <td>${talk.description}</td>`;
                     talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
                     row.style.backgroundColor = 'white';
                     row.style.color = 'black';
@@ -1029,11 +1038,12 @@ document.addEventListener('DOMContentLoaded', () => {
             event.preventDefault();
 
             const newTalk = {
-                year: parseInt(talksForm.year.value, 10),
+                year: talksForm.year.value,
                 description: talksForm.description.value
             };
-            window.location.href = 'index.html'
-            fetch('https://taimoor-khan-zxmp.onrender.com/api/invitedtalk/add', {
+            console.log(newTalk);
+            // window.location.href = 'index.html'
+            fetch('http://localhost:1335/api/invitedtalk/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -1046,7 +1056,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const row = document.createElement('tr');
                 
                 
-                row.innerHTML = `<td>${data.description}</td>`;
+                row.innerHTML = `
+                
+                <td>${data.description}</td>
+                <br/>`;
                 talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
                 talksForm.reset();
             })
@@ -1090,8 +1103,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 name: addMembershipForm.name.value,
                 organisation: addMembershipForm.organisation.value
             };
-            alert(newMembership.organisation);
-
+            // alert(newMembership.organisation);
+            window.location.href = 'index.html';
             
             // Fetch data and add membership
             fetch('http://localhost:1335/api/memberships/add', {
@@ -1121,7 +1134,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 membershipsTableBody.insertBefore(row, membershipsTableBody.firstChild);
     
                 // addMembershipForm.reset();
-                window.location.href = 'index.html';
+                // window.location.href = 'index.html';
                 addMembershipForm.reset();
             })
             .catch(error => {
@@ -1129,6 +1142,259 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+    if (editorialbody) {
+        // alert("edit")
+        fetch('http://localhost:1335/api/editorials/read')
+            .then(response => response.json())
+            .then(data => {
+                
+                // Organize data by year
+                data.sort((a, b) => b.year - a.year);
+    
+                const editorialsByYear = {};
+                data.forEach(journal => {
+                    if (!editorialsByYear[journal.year]) {
+                        editorialsByYear[journal.year] = [];
+                    }
+                    editorialsByYear[journal.year].push(journal);
+                });
+    
+                // Generate HTML for each year
+                for (const [year, editorials] of Object.entries(editorialsByYear)) {
+                    const yearHeader = document.createElement('div');
+                    yearHeader.classList.add('h4');
+                    yearHeader.textContent = year;
+    
+                    const editorialEntries = editorials.map((journal, index) => {
+                        return `
+                            <div class="academic-block mb-4">
+                                <div>
+                                    <strong>${index + 1}.</strong> ${journal.description}
+                                </div>
+                                <div class="mb-4">
+                                    <strong>DOI: </strong>
+                                    <a class="read fw-bold" href="${journal.doiLink}" target="_blank">${journal.doiLink}</a>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                    editorialbody.style.borderLeft = '0';
+                    editorialbody.style.paddingLeft = '0px';
+                    editorialbody.insertAdjacentHTML('afterbegin', yearHeader.outerHTML + editorialEntries);
+                }
+            })
+            .catch(error => console.error('Error fetching editorial:', error));
+    }
+    
+    if (addEditorialsForm) {
+        addEditorialsForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+    
+            const newJournal = {
+                year: addEditorialsForm.year.value,
+                description: addEditorialsForm.description.value,
+                doiLink: addEditorialsForm.doiLink.value,
+            };
+            alert(newJournal.year);
+            window.location.href = 'index.html';
+            fetch('http://localhost:1335/api/editorials/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newJournal)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // console.log("Journal added:", data.doi);
+                data.sort((a, b) => b.year - a.year);
+                const journalBlock = document.createElement('div');
+                journalBlock.classList.add('academic-block', 'mb-4');
+                journalBlock.innerHTML = `
+                    <div class="h4">${data.year}</div>
+                        <div>
+                            <strong>${data.description}</strong>
+                        </div>
+                        <div class="mb-4">
+                            <strong>DOI: </strong>
+                            <a class="read fw-bold" href="${data.doi}" target="_blank">${data.doi}</a>
+                        </div>
+                    `;
+                    editorialbody.style.borderLeft = '0';
+                    editorialbody.style.paddingLeft = '0px';
+                    editorialbody.appendChild(journalBlock);
+                    addEditorialsForm.reset();
+                
+                let yearHeader = Array.from(editorialbody.querySelectorAll('.h4'))
+            .find(header => header.textContent === data.year.toString());
+        
+            if (!yearHeader) {
+                yearHeader = document.createElement('div');
+                yearHeader.classList.add('h4');
+                yearHeader.textContent = data.year;
+                editorialbody.insertBefore(yearHeader, editorialbody.firstChild);
+            }
+                    
+                })
+            .catch(error => console.error('Error:', error));
+        });
+    }
+    // console.log("Patent element found",patent);
+    if(patent){
+       
+        fetch('http://localhost:1335/api/patents/read')
+        .then(response => {
+            console.log("Response received:", response);
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+            data.forEach(talk => {
+                const row = document.createElement('div');
+                row.innerHTML = `<div>
+                <div>${talk.description}</div>
+                ${talk.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${talk.doiLink}" target="_blank">${talk.doiLink}</a>
+                    </div>` : ''}
+            </div>`;
+                patent.insertBefore(row, patent.firstChild); // Add the new talk at the top
+                console.log("patent",row);
+                // row.style.backgroundColor = 'white';
+                row.style.color = 'black';
+            });
+        })
+        .catch(error => console.error('Error fetching patent:', error));
+    }
+
+
+// Handle form submission
+if (addPatent) {
+    addPatent.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const newPatent = {
+            // year: parseInt(talksForm.year.value, 10),
+            description: addPatent.description.value,
+            doiLink: addPatent.doiLink.value
+        };
+        console.log("data",newPatent);
+        window.location.href = 'index.html'
+        fetch('http://localhost:1335/api/patents/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newPatent)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Talk added:", data);
+            const row = document.createElement('li');
+            row.innerHTML = `
+            <div>
+                <p>${data.description}</p>
+                ${data.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${data.doiLink}" target="_blank">${data.doiLink}</a>
+                    </div>` : ''}
+            </div>
+            `
+            
+            row.innerHTML = `<td>${data.description}</td>`;
+            patent.insertBefore(row, patent.firstChild); // Add the new talk at the top
+            addPatent.reset();
+        })
+        .catch(error => console.error('Error submitting talk:', error));
+    });
+}
+if(bookChBody){
+    const booksList = bookChBody.querySelector('ul');
+    fetch('http://localhost:1335/api/bookChapters/read')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        // console.log("response",response);
+        return response.json();
+    })
+    .then(data => {
+        
+        console.log('bookch Data fetched:', data);
+        data.forEach(book => {
+            const newBook = document.createElement('li');
+            // newBook.classList.add('academic-block','mb-4')
+
+            newBook.innerHTML =`
+                <div>
+                    <strong>taimoor Khan</strong> ${book.author}, <strong>“${book.description}” ${book.name}</strong>, ${book.place} ${book.isbn ? `ISBN:${book.isbn} ${book.date}`:''} ${book.subdescription ? `<p class="text-danger">(${book.subdescription})</p>` : ''}
+                    ${book.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${book.doiLink}" target="_blank">${book.doiLink}</a>
+                    </div>` : ''}
+                </div>
+            `;
+            booksList.insertBefore(newBook,booksList.firstChild);
+        });
+        
+    })
+    .catch(error => console.error('Error fetching projects:', error));
+}
+if(addBookChapForm){
+    addBookChapForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const newBook = {
+            author:addBookChapForm.author.value,
+            description: addBookChapForm.description.value,
+            subdescription: addBookChapForm.subdescription.value,
+            doiLink: addBookChapForm.doiLink.value,
+            name:addBookChapForm.name.value,
+            place:addBookChapForm.place.value,
+            date:addBookChapForm.date.value,
+            isbn:addBookChapForm.isbn.value,
+        };
+        // console.log('newbook',newBook);
+        window.location.href = 'index.html';
+        fetch('http://localhost:1335/api/bookChapters/add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newBook)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // console.log("Bookchepter added:", data);
+            const newBookElement = document.createElement('li');
+            newBookElement.innerHTML = `
+                <div>
+                    <strong>${data.author}</strong>, <strong>“${data.description}” ${data.name}</strong>  ${data.isbn ? `ISBN:${data.isbn} ${data.date}`:''}, ${data.place} <p class="text-danger">(${data.subDescription})</p>
+                    ${data.doiLink ? `
+                    <div class="mb-4">
+                        <strong>DOI: </strong>
+                        <a class="read fw-bold" href="${data.doiLink}" target="_blank">${data.doiLink}</a>
+                    </div>` : ''}
+                </div>
+            `;
+            bookChBody.insertBefore(newBookElement, bookChBody.firstChild);
+            addBookChapForm.reset();
+        })
+        .catch(error => console.error('Error submitting book:', error));
+    });
+} 
+
+
+    
+    
 });
             
         

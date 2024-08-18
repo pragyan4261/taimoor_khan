@@ -19,10 +19,10 @@ const Research = require('./models/reasearch.model');
 const Ieee = require('./models/ieee.model');
 const InvitedTalk = require('./models/invitedTalh.model');
 // const Academic = require('./models/academic.model');
-// const Patent = require('./models/patent.model');
 const Membership = require('./models/membership.model');
-// const EditorialActivity = require('./models/editactivites.model');
-// const BookChapter = require('./models/bookchapters.model');
+const EditorialActivity = require('./models/editorialacitivity.model');
+const Patent = require('./models/patent.model');
+const BookChapter = require('./models/bookchapters.model');
 const DB_NAME = 'Cluster0';
 require('dotenv').config();
  
@@ -235,6 +235,15 @@ app.post('/api/bookChapters/add', async (req, res) => {
     }
 });
 
+app.get('/api/bookChapters/read', async (req, res) => {
+    try {
+        const newBookChap = await BookChapter.find();
+        res.json(newBookChap);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.post('/api/journals/add', async (req, res) => {
     try {
         const newJournal = new Journal(req.body);
@@ -244,6 +253,8 @@ app.post('/api/journals/add', async (req, res) => {
         res.status(400).json({ error: error.message });
     }
 });
+
+
 
 // Read all admin experience
 app.get('/api/journals/read', async (req, res) => {
@@ -403,6 +414,44 @@ app.get('/api/invitedtalk/read', async(req,res) => {
    try {
     const newTalk = await InvitedTalk.find();
     res.json(newTalk);
+   } catch (error) {
+    res.status(500).json({ error: error.message });
+   }
+})
+
+app.post('/api/editorials/add', async(req,res) =>{
+    try {
+        const newEditorialActivity = await EditorialActivity(req.body);
+        await newEditorialActivity.save();
+        res.status(201).json(newEditorialActivity);
+    } catch (error) {
+        res.status(400).json({ error: error.message }); 
+    }
+})
+
+app.get('/api/editorials/read', async(req,res) => {
+   try {
+    const newEditorialActivity = await EditorialActivity.find();
+    res.json(newEditorialActivity);
+   } catch (error) {
+    res.status(500).json({ error: error.message });
+   }
+})
+
+app.post('/api/patents/add', async(req,res) =>{
+    try {
+        const newPatent = await Patent(req.body);
+        await newPatent.save();
+        res.status(201).json(newPatent);
+    } catch (error) {
+        res.status(400).json({ error: error.message }); 
+    }
+})
+
+app.get('/api/patents/read', async(req,res) => {
+   try {
+    const newPatent = await Patent.find();
+    res.json(newPatent);
    } catch (error) {
     res.status(500).json({ error: error.message });
    }
