@@ -1021,7 +1021,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 data.forEach(talk => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                    <td>${talk.year}</td>
+                    
                     <td>${talk.description}</td>`;
                     talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
                     row.style.backgroundColor = 'white';
@@ -1057,7 +1057,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 
                 row.innerHTML = `
-                <td>${data.year}</td>
+                
                 <td>${data.description}</td>
                 <br/>`;
                 talksList.insertBefore(row, talksList.firstChild); // Add the new talk at the top
